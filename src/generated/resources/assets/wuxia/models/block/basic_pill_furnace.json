@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "wuxia:block/basic_pill_furnace_front",
+    "side": "wuxia:block/basic_pill_furnace_side",
+    "top": "wuxia:block/basic_pill_furnace_top"
+  }
+}

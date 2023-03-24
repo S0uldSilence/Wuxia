@@ -1,0 +1,11 @@
+{
+  "type": "wuxia:basic_pill_furnaceing",
+  "ingredients": [
+    {
+      "item": "minecraft:stick"
+    }
+  ],
+  "output": {
+    "item": "minecraft:diamond"
+  }
+}
