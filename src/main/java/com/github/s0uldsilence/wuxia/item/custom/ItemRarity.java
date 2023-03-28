@@ -1,6 +1,6 @@
 package com.github.s0uldsilence.wuxia.item.custom;
 
-public enum Rarity {
+public enum ItemRarity {
     COMMON("Ordinary"),
     UNCOMMON("Refined"),
     RARE("Precious"),
@@ -9,7 +9,7 @@ public enum Rarity {
 
     private final String name;
 
-    Rarity(String name) {
+    ItemRarity(String name) {
         this.name = name;
     }
 

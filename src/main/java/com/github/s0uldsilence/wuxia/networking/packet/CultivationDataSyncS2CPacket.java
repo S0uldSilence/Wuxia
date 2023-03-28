@@ -1,5 +1,6 @@
 package com.github.s0uldsilence.wuxia.networking.packet;
 
+import com.github.s0uldsilence.wuxia.capability.CultivationMethods;
 import com.github.s0uldsilence.wuxia.client.ClientCultivationData;
 import com.github.s0uldsilence.wuxia.capability.Cultivation;
 import com.github.s0uldsilence.wuxia.capability.CultivationStage;
@@ -17,18 +18,18 @@ public class CultivationDataSyncS2CPacket {
 
     public CultivationDataSyncS2CPacket(FriendlyByteBuf buf) {
         Cultivation cultivation = new Cultivation();
+        cultivation.setCultivationMethod(CultivationMethods.getMethodByName(buf.readUtf()));
         cultivation.setCultivationExperience(buf.readInt());
-        cultivation.setCultivationStage(CultivationStage.getByStageIndex(buf.readInt()));
+        cultivation.setCurrentStageIndex(buf.readInt());
         cultivation.setCurrentMana(buf.readInt());
-        cultivation.setMaxMana(buf.readInt());
         this.cultivation = cultivation;
     }
 
     public void toBytes(FriendlyByteBuf buf) {
+        buf.writeUtf(cultivation.getCultivationMethod().getName());
         buf.writeInt(cultivation.getCultivationExperience());
-        buf.writeInt(cultivation.getCultivationStage().getStageIndex());
+        buf.writeInt(cultivation.getCurrentStageIndex());
         buf.writeInt(cultivation.getCurrentMana());
-        buf.writeInt(cultivation.getMaxMana());
     }
 
     public boolean handle(Supplier<NetworkEvent.Context> supplier) {

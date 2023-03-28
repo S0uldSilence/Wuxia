@@ -33,7 +33,7 @@
               "functions": [
                 {
                   "function": "minecraft:set_nbt",
-                  "tag": "{wuxia.rarity:5}",
+                  "tag": "{wuxia.rarity:mythical}",
                   "conditions": [
                     {
                       "condition": "minecraft:random_chance",
@@ -43,17 +43,7 @@
                 },
                 {
                   "function": "minecraft:set_nbt",
-                  "tag": "{wuxia.rarity:4}",
-                  "conditions": [
-                    {
-                      "condition": "minecraft:random_chance",
-                      "chance": 0.2
-                    }
-                  ]
-                },
-                {
-                  "function": "minecraft:set_nbt",
-                  "tag": "{wuxia.rarity:3}",
+                  "tag": "{wuxia.rarity:peerless}",
                   "conditions": [
                     {
                       "condition": "minecraft:random_chance",
@@ -63,7 +53,7 @@
                 },
                 {
                   "function": "minecraft:set_nbt",
-                  "tag": "{wuxia.rarity:2}",
+                  "tag": "{wuxia.rarity:precious}",
                   "conditions": [
                     {
                       "condition": "minecraft:random_chance",
@@ -73,11 +63,21 @@
                 },
                 {
                   "function": "minecraft:set_nbt",
-                  "tag": "{wuxia.rarity:1}",
+                  "tag": "{wuxia.rarity:refined}",
                   "conditions": [
                     {
                       "condition": "minecraft:random_chance",
-                      "chance": 0.5
+                      "chance": 0.8
+                    }
+                  ]
+                },
+                {
+                  "function": "minecraft:set_nbt",
+                  "tag": "{wuxia.rarity:ordinary}",
+                  "conditions": [
+                    {
+                      "condition": "minecraft:random_chance",
+                      "chance": 0.9
                     }
                   ]
                 },

@@ -2,6 +2,7 @@ package com.github.s0uldsilence.wuxia.block;
 
 import com.github.s0uldsilence.wuxia.Wuxia;
 import com.github.s0uldsilence.wuxia.block.custom.BasicPillFurnaceBlock;
+import com.github.s0uldsilence.wuxia.block.custom.ManaCrystalOreBlock;
 import com.github.s0uldsilence.wuxia.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
@@ -33,8 +34,8 @@ public class ModBlocks {
                     .strength(8f).requiresCorrectToolForDrops(), UniformInt.of(2, 6)));
 
     public static final RegistryObject<Block> MANA_CRYSTAL_ORE = registerBlock("mana_crystal_ore",
-            () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE)
-                    .strength(8f).requiresCorrectToolForDrops(), UniformInt.of(2, 6)));
+            () -> new ManaCrystalOreBlock(BlockBehaviour.Properties.of(Material.STONE)
+                    .strength(8f).requiresCorrectToolForDrops()));
 
     public static final RegistryObject<Block> BASIC_PILL_FURNACE = registerBlock("basic_pill_furnace",
             () -> new BasicPillFurnaceBlock(BlockBehaviour.Properties.of(Material.METAL)

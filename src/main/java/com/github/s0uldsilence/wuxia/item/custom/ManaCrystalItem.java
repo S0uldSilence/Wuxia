@@ -1,14 +1,6 @@
 package com.github.s0uldsilence.wuxia.item.custom;
 
-import com.github.s0uldsilence.wuxia.item.ModItems;
-import com.github.s0uldsilence.wuxia.util.InventoryUtil;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.block.model.MultiVariant;
-import net.minecraft.client.resources.model.ModelResourceLocation;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -20,7 +12,6 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
-import java.awt.*;
 import java.util.List;
 
 public class ManaCrystalItem extends Item {
@@ -66,12 +57,12 @@ public class ManaCrystalItem extends Item {
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents,
                                 TooltipFlag pIsAdvanced) {
-        if(pStack.hasTag()) {
+        /*if(pStack.hasTag()) {
             int rarity = pStack.getTag().getInt("wuxia.rarity");
-            Rarity rarityEnum = Rarity.values()[rarity - 1];
+            ItemRarity rarityEnum = ItemRarity.values()[rarity - 1];
             String rarityName = rarityEnum.getName();
             pTooltipComponents.add(Component.literal("Rarity: " + rarityName));
-        }
+        }*/
 
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }

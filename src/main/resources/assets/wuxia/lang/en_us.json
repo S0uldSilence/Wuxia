@@ -1,0 +1,16 @@
+{
+  "item.wuxia.green_jade": "Green Jade",
+  "item.wuxia.mana_crystal": "Mana Crystal",
+
+  "block.wuxia.mana_crystal_ore": "Mana Crystal Ore",
+  "block.wuxia.green_jade_block": "Green Jade Block",
+  "block.wuxia.green_jade_ore": "Green Jade Ore",
+  "block.wuxia.deepslate_green_jade_ore": "Deepslate Green Jade Ore",
+
+  "creativemodetab.wuxia_tab": "Wuxia",
+  "key.category.wuxia.keycategory": "Wuxia Mod",
+  "key.wuxia.cultivate": "Cultivate",
+  "guis.wuxia.basicpillfurnace": "Basic Pill Furnace",
+
+  "recipe_category.wuxia.basic_pill_furnace": "Basic Pill Furnace Recipes",
+}

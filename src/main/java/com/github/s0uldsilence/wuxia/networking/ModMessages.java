@@ -2,9 +2,9 @@ package com.github.s0uldsilence.wuxia.networking;
 
 import com.github.s0uldsilence.wuxia.Wuxia;
 import com.github.s0uldsilence.wuxia.networking.packet.CCultivateC2SPacket;
-import com.github.s0uldsilence.wuxia.networking.packet.CultivateC2SPacket;
 import com.github.s0uldsilence.wuxia.networking.packet.CultivationDataSyncS2CPacket;
 import com.github.s0uldsilence.wuxia.networking.packet.ExampleC2SPacket;
+import com.github.s0uldsilence.wuxia.networking.packet.SetCultivationMethodC2SPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkDirection;
@@ -37,10 +37,10 @@ public class ModMessages {
                 .consumerMainThread(ExampleC2SPacket::handle)
                 .add();
 
-        net.messageBuilder(CultivateC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
-                .decoder(CultivateC2SPacket::new)
-                .encoder(CultivateC2SPacket::toBytes)
-                .consumerMainThread(CultivateC2SPacket::handle)
+        net.messageBuilder(SetCultivationMethodC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(SetCultivationMethodC2SPacket::new)
+                .encoder(SetCultivationMethodC2SPacket::toBytes)
+                .consumerMainThread(SetCultivationMethodC2SPacket::handle)
                 .add();
 
         net.messageBuilder(CCultivateC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)

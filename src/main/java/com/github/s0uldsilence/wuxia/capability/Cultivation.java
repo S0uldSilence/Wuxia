@@ -1,23 +1,33 @@
 package com.github.s0uldsilence.wuxia.capability;
 
 public class Cultivation {
-    private CultivationStage cultivationStage;
+    private CultivationMethod cultivationMethod;
+    private int currentStageIndex;
     private int cultivationExperience;
     private int currentMana;
-    private int maxMana;
+
     public Cultivation() {
-        this.cultivationStage = CultivationStage.MORTAL;
+        // Set a default CultivationMethod, or assign it when the player chooses one
+        this.cultivationMethod = CultivationMethods.getMethodByName("Basic Method");
+        this.currentStageIndex = 0;
         this.cultivationExperience = 0;
         this.currentMana = 0;
-        this.maxMana = 0;
     }
 
-    public CultivationStage getCultivationStage() {
-        return cultivationStage;
+    public CultivationMethod getCultivationMethod() {
+        return cultivationMethod;
     }
 
-    public void setCultivationStage(CultivationStage cultivationStage) {
-        this.cultivationStage = cultivationStage;
+    public void setCultivationMethod(CultivationMethod cultivationMethod) {
+        this.cultivationMethod = cultivationMethod;
+    }
+
+    public int getCurrentStageIndex() {
+        return currentStageIndex;
+    }
+
+    public void setCurrentStageIndex(int currentStageIndex) {
+        this.currentStageIndex = currentStageIndex;
     }
 
     public int getCultivationExperience() {
@@ -27,6 +37,7 @@ public class Cultivation {
     public void setCultivationExperience(int cultivationExperience) {
         this.cultivationExperience = cultivationExperience;
     }
+
     public int getCurrentMana() {
         return currentMana;
     }
@@ -36,20 +47,21 @@ public class Cultivation {
     }
 
     public int getMaxMana() {
-        //return maxMana;
-        return cultivationStage.getManaCapacity();
-    }
-
-    public void setMaxMana(int maxMana) {
-        this.maxMana = maxMana;
+        return getCultivationStage().getManaCapacity();
     }
 
     public int getManaRegenerationRate() {
-        return cultivationStage.getManaRegenerationRate();
+        return getCultivationStage().getManaRegenerationRate();
     }
 
+    public CultivationStage getCultivationStage() {
+        return cultivationMethod.getStages().get(currentStageIndex);
+    }
+    public CultivationStage getCurrentStage() {
+        return cultivationMethod.getStages().get(currentStageIndex);
+    }
     public void regenerateMana() {
-        maxMana = cultivationStage.getManaCapacity();
+        int maxMana = getMaxMana();
         if (currentMana < maxMana) {
             currentMana += getManaRegenerationRate();
             if (currentMana > maxMana) {
