@@ -21,7 +21,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.slf4j.Logger;
 
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -52,26 +51,6 @@ public class Wuxia {
 
     }
 
-    /*private void registerCultivationMethods() {
-        // Create CultivationStages for the method
-        CultivationStage mortalStage = new CultivationStage("Mortal", 100, 100, 0, Collections.emptyList());
-        CultivationStage earthlyStage = new CultivationStage("Earthly", 200, 200, 5, Arrays.asList(
-                //new RequiredItem(ModItems.MANA_CRYSTAL.get().getDefaultInstance(), 2),
-                new RequiredItem(Items.EMERALD.getDefaultInstance(), 2)
-        ));
-        CultivationStage heavenlyStage = new CultivationStage("Heavenly", 400, 400, 10, Arrays.asList(
-                //new RequiredItem(ModItems.GREEN_JADE.get().getDefaultInstance(), 2),
-                new RequiredItem(Items.DRAGON_BREATH.getDefaultInstance(), 3),
-                new RequiredItem(Items.END_CRYSTAL.getDefaultInstance(), 2)
-        ));
-
-        // Create a CultivationMethod with the stages
-        CultivationMethod basicMethod = new CultivationMethod("Basic Method", 1, Arrays.asList(mortalStage, earthlyStage));
-        CultivationMethod advancedMethod = new CultivationMethod("Advanced Method", 1, Arrays.asList(mortalStage, earthlyStage, heavenlyStage));
-        // Register the method
-        CultivationMethods.registerMethod(basicMethod);
-        CultivationMethods.registerMethod(advancedMethod);
-    }*/
     private void commonSetup(final FMLCommonSetupEvent event) {
         ModMessages.register();
         CultivationMethods.registerCultivationMethods();

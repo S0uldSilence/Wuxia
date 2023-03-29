@@ -140,7 +140,6 @@ public class PlayerCultivation {
 
     public void loadNBTData(CompoundTag nbt) {
         String methodName = nbt.getString("cultivationMethodName");
-        // Assuming you have a method to get CultivationMethod by name
         CultivationMethod method = CultivationMethods.getMethodByName(methodName);
         this.cultivation.setCultivationMethod(method != null ? method : CultivationMethods.getDefaultMethod());
         this.cultivation.setCultivationExperience(nbt.getInt("cultivationExperience"));

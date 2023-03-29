@@ -28,12 +28,6 @@ public class ModMessages {
 
         INSTANCE = net;
 
-        net.messageBuilder(ExampleC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
-                .decoder(ExampleC2SPacket::new)
-                .encoder(ExampleC2SPacket::toBytes)
-                .consumerMainThread(ExampleC2SPacket::handle)
-                .add();
-
         net.messageBuilder(SetCultivationMethodC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
                 .decoder(SetCultivationMethodC2SPacket::new)
                 .encoder(SetCultivationMethodC2SPacket::toBytes)
