@@ -30,7 +30,7 @@ public class CultivationMethodItem extends Item {
 
         return super.useOn(pContext);
     }
-    @Override
+    /*@Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         if (!level.isClientSide()) {
             ItemStack cul1 = player.getItemInHand(hand);
@@ -40,7 +40,7 @@ public class CultivationMethodItem extends Item {
             if (CultivationMethods.getRegisteredMethodNames().contains(method)) {
                 if (methodFromPlayer.equals(method)) {
                     player.sendSystemMessage(Component.literal("You already have this cultivation method"));
-                    return super.use(level, player, hand);
+                    //return super.use(level, player, hand);
                 } else {
                     ModMessages.sendToServer(new SetCultivationMethodC2SPacket(method));
                     if (!cul1.isEmpty()) {
@@ -53,8 +53,24 @@ public class CultivationMethodItem extends Item {
         }
 
         return super.use(level, player, hand);
-    }
+    }*/
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        if (!level.isClientSide()) {
+            ItemStack cul1 = player.getItemInHand(hand);
+            String method = cul1.getTag().getString("wuxia.method");
 
+            ModMessages.sendToServer(new SetCultivationMethodC2SPacket(method));
+
+            if (!cul1.isEmpty()) {
+                cul1.shrink(1);
+            }
+
+            return new InteractionResultHolder<>(InteractionResult.SUCCESS, player.getItemInHand(hand));
+        }
+
+        return super.use(level, player, hand);
+    }
 
     @Override
     public boolean isFoil(ItemStack pStack) {

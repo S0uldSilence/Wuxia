@@ -1,25 +1,27 @@
 package com.github.s0uldsilence.wuxia.capability;
 
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.IntTag;
+import net.minecraft.nbt.ListTag;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PlayerCultivation {
     private Cultivation cultivation;
     private Player player;
-    private List<String> learnedMethodNames;
+
 
 
     public PlayerCultivation(Player player) {
         this.cultivation = new Cultivation();
         this.player = player;
-        this.learnedMethodNames = new ArrayList<>();
     }
-
     public Cultivation getCultivation() {
         return cultivation;
     }
@@ -36,6 +38,11 @@ public class PlayerCultivation {
         this.cultivation.setCultivationExperience(0);
         this.cultivation.setCurrentStageIndex(0);
         this.cultivation.setCurrentMana(0);
+        int methodId = method.getId();
+        if (!this.cultivation.getLearnedMethodIds().contains(methodId)) {
+            this.cultivation.addLearnedMethodId(methodId);
+        }
+
     }
     public void subCultivationExperience(int experience) {
         this.cultivation.setCultivationExperience(
@@ -123,6 +130,12 @@ public class PlayerCultivation {
         nbt.putInt("currentMana", this.cultivation.getCurrentMana());
         nbt.putInt("currentStageIndex", this.cultivation.getCurrentStageIndex());
 
+
+        ListTag learnedMethodsTag = new ListTag();
+        for (int learnedMethodId : this.cultivation.getLearnedMethodIds()) {
+            learnedMethodsTag.add(IntTag.valueOf(learnedMethodId));
+        }
+        nbt.put("learnedMethodIds", learnedMethodsTag);
     }
 
     public void loadNBTData(CompoundTag nbt) {
@@ -133,6 +146,10 @@ public class PlayerCultivation {
         this.cultivation.setCultivationExperience(nbt.getInt("cultivationExperience"));
         this.cultivation.setCurrentMana(nbt.getInt("currentMana"));
         this.cultivation.setCurrentStageIndex(nbt.getInt("currentStageIndex"));
+
+        ListTag learnedMethodsTag = nbt.getList("learnedMethodIds", 3); // 3 = NBTBase
+        List<Integer> learnedMethodIds = learnedMethodsTag.stream().map(tag -> ((IntTag) tag).getAsInt()).collect(Collectors.toList());
+        this.cultivation.setLearnedMethodIds(learnedMethodIds);
     }
     public void tick() {
         this.cultivation.regenerateMana();

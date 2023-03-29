@@ -39,13 +39,35 @@ public class CultivationMethods {
         ));
 
         // Create a CultivationMethod with the stages
-        CultivationMethod basicMethod = new CultivationMethod("Basic Method", 1, Arrays.asList(mortalStage, earthlyStage));
-        CultivationMethod advancedMethod = new CultivationMethod("Advanced Method", 1, Arrays.asList(mortalStage, earthlyStage, heavenlyStage));
+        CultivationMethod basicMethod = new CultivationMethod(0,"Basic Method", 1, Arrays.asList(mortalStage, earthlyStage));
+        CultivationMethod advancedMethod = new CultivationMethod(1,"Advanced Method", 1, Arrays.asList(mortalStage, earthlyStage, heavenlyStage));
         // Register the method
         CultivationMethods.registerMethod(basicMethod);
         CultivationMethods.registerMethod(advancedMethod);
     }
-
+    public static String getMethodNameById(int id) {
+        for (CultivationMethod method : methods.values()) {
+            if (method.getId() == id) {
+                return method.getName();
+            }
+        }
+        return null;
+    }
+    public static CultivationMethod getMethodById(int id) {
+        for (CultivationMethod method : methods.values()) {
+            if (method.getId() == id) {
+                return method;
+            }
+        }
+        return null;
+    }
+    public static List<Integer> getRegisteredMethodIds() {
+        List<Integer> methodIds = new ArrayList<>();
+        for (CultivationMethod method : methods.values()) {
+            methodIds.add(method.getId());
+        }
+        return methodIds;
+    }
     public static List<String> getRegisteredMethodNames() {
         return new ArrayList<>(methods.keySet());
     }

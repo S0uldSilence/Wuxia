@@ -21,6 +21,7 @@ public class SetCultivationMethodC2SPacket {
 
     public SetCultivationMethodC2SPacket(String methodName) {
         this.cultivationMethod = CultivationMethods.getMethodByName(methodName);
+        this.methodName = methodName;
     }
 
     public SetCultivationMethodC2SPacket(FriendlyByteBuf buf) {
@@ -30,6 +31,7 @@ public class SetCultivationMethodC2SPacket {
 
     public void toBytes(FriendlyByteBuf buf) {
         buf.writeUtf(this.cultivationMethod.getName());
+        buf.writeUtf(this.methodName);
     }
 
     public boolean handle(Supplier<NetworkEvent.Context> supplier) {
@@ -37,16 +39,23 @@ public class SetCultivationMethodC2SPacket {
         context.enqueueWork(() -> {
             // HERE WE ARE ON THE SERVER!
             ServerPlayer player = context.getSender();
-            //ServerLevel level = player.getLevel();
+            String methodFromPlayer = player.getCapability(PlayerCultivationProvider.PLAYER_CULTIVATION).resolve().get().getCultivation().getCultivationMethod().getName();
             player.getCapability(PlayerCultivationProvider.PLAYER_CULTIVATION).ifPresent(cultivation ->  {
                 String methodName = this.cultivationMethod.getName();
                 if (CultivationMethods.getRegisteredMethodNames().contains(methodName)) {
+                    if (methodFromPlayer.equals(methodName)) {
+                        player.sendSystemMessage(Component.literal("You already have the " + methodName + " cultivation method."));
+                        context.setPacketHandled(false);
+                        return;
+                    }
                     CultivationMethod newMethod = CultivationMethods.getMethodByName(methodName);
                     cultivation.setCultivationMethod(newMethod);
-                    player.sendSystemMessage(Component.literal("Current Cultivation Method:" + cultivation.getCultivation().getCultivationMethod().getName()));
+                    player.sendSystemMessage(Component.literal("New Cultivation Method:" + cultivation.getCultivation().getCultivationMethod().getName()));
                     ModMessages.sendToPlayer(new CultivationDataSyncS2CPacket(cultivation.getCultivation()), player);
+                    context.setPacketHandled(true);
                 } else {
                     player.sendSystemMessage(Component.literal("Invalid Cultivation Method"));
+                    context.setPacketHandled(false);
                 }
             });
         });
