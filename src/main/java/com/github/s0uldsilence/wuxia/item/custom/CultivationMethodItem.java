@@ -5,6 +5,7 @@ import com.github.s0uldsilence.wuxia.capability.CultivationMethods;
 import com.github.s0uldsilence.wuxia.capability.PlayerCultivationProvider;
 import com.github.s0uldsilence.wuxia.item.ModItems;
 import com.github.s0uldsilence.wuxia.networking.ModMessages;
+import com.github.s0uldsilence.wuxia.networking.packet.SetCultivationMethodByIdC2SPacket;
 import com.github.s0uldsilence.wuxia.networking.packet.SetCultivationMethodC2SPacket;
 import com.github.s0uldsilence.wuxia.util.InventoryUtil;
 import net.minecraft.nbt.CompoundTag;
@@ -26,41 +27,14 @@ public class CultivationMethodItem extends Item {
     public CultivationMethodItem(Item.Properties properties) {
         super(properties);
     }
-    public InteractionResult useOn(UseOnContext pContext) {
 
-        return super.useOn(pContext);
-    }
-    /*@Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-        if (!level.isClientSide()) {
-            ItemStack cul1 = player.getItemInHand(hand);
-            String method = cul1.getTag().getString("wuxia.method");
-            String methodFromPlayer = player.getCapability(PlayerCultivationProvider.PLAYER_CULTIVATION).resolve().get().getCultivation().getCultivationMethod().getName();
-
-            if (CultivationMethods.getRegisteredMethodNames().contains(method)) {
-                if (methodFromPlayer.equals(method)) {
-                    player.sendSystemMessage(Component.literal("You already have this cultivation method"));
-                    //return super.use(level, player, hand);
-                } else {
-                    ModMessages.sendToServer(new SetCultivationMethodC2SPacket(method));
-                    if (!cul1.isEmpty()) {
-                        cul1.shrink(1);
-                    }
-                }
-            } else {
-                player.sendSystemMessage(Component.literal("Invalid Cultivation Method"));
-            }
-        }
-
-        return super.use(level, player, hand);
-    }*/
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         if (!level.isClientSide()) {
             ItemStack cul1 = player.getItemInHand(hand);
-            String method = cul1.getTag().getString("wuxia.method");
+            int methodId = cul1.getTag().getInt("wuxia.method");
 
-            ModMessages.sendToServer(new SetCultivationMethodC2SPacket(method));
+            ModMessages.sendToServer(new SetCultivationMethodByIdC2SPacket(methodId));
 
             if (!cul1.isEmpty()) {
                 cul1.shrink(1);
@@ -76,12 +50,13 @@ public class CultivationMethodItem extends Item {
     public boolean isFoil(ItemStack pStack) {
         return pStack.hasTag();
     }
+
     @Override
-    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        if(pStack.hasTag()) {
-            String methodName = pStack.getTag().getString("wuxia.method");
+    public void appendHoverText(ItemStack pStack, Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        if (pStack.hasTag()) {
+            int methodId = pStack.getTag().getInt("wuxia.method");
+            String methodName = CultivationMethods.getMethodNameById(methodId);
             pTooltipComponents.add(Component.literal("Method Name: " + methodName));
-            //pStack.setHoverName(Component.literal(methodName));
         }
 
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);

@@ -1,10 +1,7 @@
 package com.github.s0uldsilence.wuxia.networking;
 
 import com.github.s0uldsilence.wuxia.Wuxia;
-import com.github.s0uldsilence.wuxia.networking.packet.CCultivateC2SPacket;
-import com.github.s0uldsilence.wuxia.networking.packet.CultivationDataSyncS2CPacket;
-import com.github.s0uldsilence.wuxia.networking.packet.ExampleC2SPacket;
-import com.github.s0uldsilence.wuxia.networking.packet.SetCultivationMethodC2SPacket;
+import com.github.s0uldsilence.wuxia.networking.packet.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkDirection;
@@ -53,6 +50,12 @@ public class ModMessages {
                 .decoder(CultivationDataSyncS2CPacket::new)
                 .encoder(CultivationDataSyncS2CPacket::toBytes)
                 .consumerMainThread(CultivationDataSyncS2CPacket::handle)
+                .add();
+
+        net.messageBuilder(SetCultivationMethodByIdC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(SetCultivationMethodByIdC2SPacket::new)
+                .encoder(SetCultivationMethodByIdC2SPacket::toBytes)
+                .consumerMainThread(SetCultivationMethodByIdC2SPacket::handle)
                 .add();
     }
 
