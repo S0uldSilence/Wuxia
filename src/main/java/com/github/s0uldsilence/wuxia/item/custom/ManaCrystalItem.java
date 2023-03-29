@@ -55,8 +55,7 @@ public class ManaCrystalItem extends Item {
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }*/
     @Override
-    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents,
-                                TooltipFlag pIsAdvanced) {
+    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
         /*if(pStack.hasTag()) {
             int rarity = pStack.getTag().getInt("wuxia.rarity");
             ItemRarity rarityEnum = ItemRarity.values()[rarity - 1];

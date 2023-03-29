@@ -5,17 +5,19 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerCultivation {
     private Cultivation cultivation;
     private Player player;
-
+    private List<String> learnedMethodNames;
 
 
     public PlayerCultivation(Player player) {
         this.cultivation = new Cultivation();
         this.player = player;
+        this.learnedMethodNames = new ArrayList<>();
     }
 
     public Cultivation getCultivation() {
@@ -60,54 +62,6 @@ public class PlayerCultivation {
         }
     }
 
-    /*private boolean hasRequiredItems(CultivationStage nextStage) {
-        Inventory inventory = player.getInventory();
-
-        for (CultivationMethods.RequiredItem requiredItem : nextStage.getRequiredItems()) {
-            int requiredNumber = requiredItem.getRequiredNumber();
-            ItemStack itemStack = requiredItem.getItemStack();
-
-            int totalNumber = 0;
-            for (int i = 0; i < inventory.getContainerSize(); i++) {
-                ItemStack stackInSlot = inventory.getItem(i);
-                if (stackInSlot.is(itemStack.getItem()) && ItemStack.tagMatches(itemStack, stackInSlot)) {
-                    totalNumber += stackInSlot.getCount();
-                }
-            }
-
-            if (totalNumber < requiredNumber) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    private void removeRequiredItems(CultivationStage nextStage) {
-        Inventory inventory = player.getInventory();
-
-        for (CultivationMethods.RequiredItem requiredItem : nextStage.getRequiredItems()) {
-            int requiredNumber = requiredItem.getRequiredNumber();
-            ItemStack itemStack = requiredItem.getItemStack();
-
-            int remainingNumber = requiredNumber;
-
-            for (int i = 0; i < inventory.getContainerSize(); i++) {
-                ItemStack stackInSlot = inventory.getItem(i);
-                if (stackInSlot.is(itemStack.getItem()) && ItemStack.tagMatches(itemStack, stackInSlot)) {
-                    int stackSize = stackInSlot.getCount();
-                    if (stackSize <= remainingNumber) {
-                        inventory.setItem(i, ItemStack.EMPTY);
-                        remainingNumber -= stackSize;
-                    } else {
-                        stackInSlot.shrink(remainingNumber);
-                        inventory.setItem(i, stackInSlot);
-                        break;
-                    }
-                }
-            }
-        }
-    }*/
     private boolean hasRequiredItems(CultivationStage nextStage) {
         Inventory inventory = player.getInventory();
 
@@ -168,6 +122,7 @@ public class PlayerCultivation {
         nbt.putInt("cultivationExperience", this.cultivation.getCultivationExperience());
         nbt.putInt("currentMana", this.cultivation.getCurrentMana());
         nbt.putInt("currentStageIndex", this.cultivation.getCurrentStageIndex());
+
     }
 
     public void loadNBTData(CompoundTag nbt) {

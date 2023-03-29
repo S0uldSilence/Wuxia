@@ -37,11 +37,11 @@ public class SetCultivationMethodC2SPacket {
         context.enqueueWork(() -> {
             // HERE WE ARE ON THE SERVER!
             ServerPlayer player = context.getSender();
-            ServerLevel level = player.getLevel();
+            //ServerLevel level = player.getLevel();
             player.getCapability(PlayerCultivationProvider.PLAYER_CULTIVATION).ifPresent(cultivation ->  {
                 String methodName = this.cultivationMethod.getName();
-                CultivationMethod newMethod = CultivationMethods.getMethodByName(methodName);
-                if (newMethod != null) {
+                if (CultivationMethods.getRegisteredMethodNames().contains(methodName)) {
+                    CultivationMethod newMethod = CultivationMethods.getMethodByName(methodName);
                     cultivation.setCultivationMethod(newMethod);
                     player.sendSystemMessage(Component.literal("Current Cultivation Method:" + cultivation.getCultivation().getCultivationMethod().getName()));
                     ModMessages.sendToPlayer(new CultivationDataSyncS2CPacket(cultivation.getCultivation()), player);
@@ -52,4 +52,5 @@ public class SetCultivationMethodC2SPacket {
         });
         return true;
     }
+
 }

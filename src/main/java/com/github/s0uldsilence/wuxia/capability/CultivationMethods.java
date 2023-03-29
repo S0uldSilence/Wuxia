@@ -5,10 +5,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class CultivationMethods {
     private static final Map<String, CultivationMethod> methods = new HashMap<>();
@@ -47,6 +44,10 @@ public class CultivationMethods {
         // Register the method
         CultivationMethods.registerMethod(basicMethod);
         CultivationMethods.registerMethod(advancedMethod);
+    }
+
+    public static List<String> getRegisteredMethodNames() {
+        return new ArrayList<>(methods.keySet());
     }
     public static CompoundTag createNbt(String key, String value) {
         CompoundTag tag = new CompoundTag();

@@ -6,6 +6,7 @@ public class Cultivation {
     private int cultivationExperience;
     private int currentMana;
 
+
     public Cultivation() {
         // Set a default CultivationMethod, or assign it when the player chooses one
         this.cultivationMethod = CultivationMethods.getMethodByName("Basic Method");

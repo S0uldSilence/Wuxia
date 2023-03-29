@@ -1,5 +1,6 @@
 package com.github.s0uldsilence.wuxia.client;
 
+import com.github.s0uldsilence.wuxia.capability.CultivationMethods;
 import com.github.s0uldsilence.wuxia.capability.CultivationStage;
 import com.github.s0uldsilence.wuxia.capability.PlayerCultivationProvider;
 import net.minecraft.client.Minecraft;
@@ -28,5 +29,12 @@ public class CultivationHudOverlay {
             GuiComponent.drawString(poseStack, Minecraft.getInstance().font, Component.nullToEmpty("Mana: " + currentMana + " / " + maxMana), x, y + 30, 0xFFFFFF);
             GuiComponent.drawString(poseStack, Minecraft.getInstance().font, Component.nullToEmpty("Mana Regen: " + manaRegenRate), x, y + 40, 0xFFFFFF);
         });
+        int listX = 150;
+        int listY = 10;
+        GuiComponent.drawString(poseStack, Minecraft.getInstance().font, Component.nullToEmpty("Registered Methods:"), listX, listY, 0xFFFFFF);
+        for (String methodName : CultivationMethods.getRegisteredMethodNames()) {
+            listY += 10;
+            GuiComponent.drawString(poseStack, Minecraft.getInstance().font, Component.nullToEmpty(methodName), listX, listY, 0xFFFFFF);
+        }
     });
 }
