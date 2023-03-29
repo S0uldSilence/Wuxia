@@ -31,7 +31,7 @@ public class Wuxia {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "wuxia";
     // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
+    //private static final Logger LOGGER = LogUtils.getLogger();
     public Wuxia() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
@@ -93,7 +93,6 @@ public class Wuxia {
             event.accept(ModItems.MANA_CRYSTAL);
         }
     }
-
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
