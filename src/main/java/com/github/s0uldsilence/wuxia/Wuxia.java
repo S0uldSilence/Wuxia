@@ -70,6 +70,7 @@ public class Wuxia {
 
             event.accept(ModBlocks.MANA_CRYSTAL_ORE);
             event.accept(ModItems.MANA_CRYSTAL);
+            event.accept(ModItems.CULTIVATION_CHECKER);
         }
     }
 

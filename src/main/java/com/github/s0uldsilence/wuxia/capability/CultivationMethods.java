@@ -61,6 +61,14 @@ public class CultivationMethods {
         }
         return null;
     }
+    public static int getMethodIdByName(String name) {
+        for (CultivationMethod method : methods.values()) {
+            if (method.getName().equals(name)) {
+                return method.getId();
+            }
+        }
+        return -1; // or throw an exception if the name is not found
+    }
     public static List<Integer> getRegisteredMethodIds() {
         List<Integer> methodIds = new ArrayList<>();
         for (CultivationMethod method : methods.values()) {

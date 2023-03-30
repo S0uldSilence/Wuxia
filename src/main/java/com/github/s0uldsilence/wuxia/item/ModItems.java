@@ -1,6 +1,7 @@
 package com.github.s0uldsilence.wuxia.item;
 
 import com.github.s0uldsilence.wuxia.Wuxia;
+import com.github.s0uldsilence.wuxia.item.custom.CultivationCheckerItem;
 import com.github.s0uldsilence.wuxia.item.custom.CultivationMethodItem;
 import com.github.s0uldsilence.wuxia.item.custom.ManaCrystalItem;
 import net.minecraft.world.item.Item;
@@ -20,7 +21,8 @@ public class ModItems {
     public static final RegistryObject<Item> CULTIVATION_METHOD = ITEMS.register("cultivation_method",
             () -> new CultivationMethodItem(new Item.Properties()));
 
-
+    public static final RegistryObject<Item> CULTIVATION_CHECKER = ITEMS.register("cultivation_checker",
+            () -> new CultivationCheckerItem(new Item.Properties()));
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

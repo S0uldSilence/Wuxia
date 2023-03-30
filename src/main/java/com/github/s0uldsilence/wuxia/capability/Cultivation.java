@@ -12,13 +12,11 @@ public class Cultivation {
 
 
     public Cultivation() {
-        // Set a default CultivationMethod, or assign it when the player chooses one
-        //this.cultivationMethod = CultivationMethods.getMethodByName("Basic Method");
-        this.cultivationMethod = CultivationMethods.getMethodById(0);
-        this.currentStageIndex = 0;
-        this.cultivationExperience = 0;
-        this.currentMana = 0;
-        this.learnedMethodIds = new ArrayList<>();
+        this.cultivationMethod = CultivationMethods.getMethodById(0); // Default method
+        this.currentStageIndex = 0;     // Default stage
+        this.cultivationExperience = 0;     // Default experience
+        this.currentMana = 0;           // Default mana
+        this.learnedMethodIds = new ArrayList<>();      // Default learned methods
     }
 
     public CultivationMethod getCultivationMethod() {

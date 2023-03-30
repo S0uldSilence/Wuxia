@@ -130,7 +130,6 @@ public class PlayerCultivation {
         nbt.putInt("currentMana", this.cultivation.getCurrentMana());
         nbt.putInt("currentStageIndex", this.cultivation.getCurrentStageIndex());
 
-
         ListTag learnedMethodsTag = new ListTag();
         for (int learnedMethodId : this.cultivation.getLearnedMethodIds()) {
             learnedMethodsTag.add(IntTag.valueOf(learnedMethodId));
