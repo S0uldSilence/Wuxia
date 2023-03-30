@@ -29,12 +29,12 @@ public class CultivationMethods {
 
     public static void registerCultivationMethods() {
         // Create CultivationStages for the method
-        CultivationStage mortalStage = new CultivationStage("Mortal", 100, 100, 0, Collections.emptyList());
-        CultivationStage earthlyStage = new CultivationStage("Earthly", 200, 200, 5, Arrays.asList(
+        CultivationStage mortalStage = new CultivationStage("Mortal", 100, new Mana(0, 0), Collections.emptyList());
+        CultivationStage earthlyStage = new CultivationStage("Earthly", 200, new Mana(100, 5), Arrays.asList(
                 new RequiredItem(createItemStack(ModItems.MANA_CRYSTAL.get().getDefaultInstance(), createNbt("wuxia.rarity", "ordinary")), 1),
                 new RequiredItem(Items.EMERALD.getDefaultInstance(), 2)
         ));
-        CultivationStage heavenlyStage = new CultivationStage("Heavenly", 400, 400, 10, Arrays.asList(
+        CultivationStage heavenlyStage = new CultivationStage("Heavenly", 400, new Mana(200, 10), Arrays.asList(
                 new RequiredItem(createItemStack(ModItems.MANA_CRYSTAL.get().getDefaultInstance(), null), 1)
         ));
 

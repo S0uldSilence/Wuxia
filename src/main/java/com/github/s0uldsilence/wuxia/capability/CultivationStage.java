@@ -11,16 +11,13 @@ import java.util.List;
 public class CultivationStage {
     private String name;
     private int experienceRequired;
-    private int manaCapacity;
-    private int manaRegenerationRate;
+    private Mana mana;
     private List<CultivationMethods.RequiredItem> requiredItems;
 
-    public CultivationStage(String name, int experienceRequired, int manaCapacity,
-                            int manaRegenerationRate, List<CultivationMethods.RequiredItem> requiredItems) {
+    public CultivationStage(String name, int experienceRequired, Mana mana, List<CultivationMethods.RequiredItem> requiredItems) {
         this.name = name;
         this.experienceRequired = experienceRequired;
-        this.manaCapacity = manaCapacity;
-        this.manaRegenerationRate = manaRegenerationRate;
+        this.mana = mana;
         this.requiredItems = requiredItems;
     }
 
@@ -32,12 +29,8 @@ public class CultivationStage {
         return experienceRequired;
     }
 
-    public int getManaCapacity() {
-        return manaCapacity;
-    }
-
-    public int getManaRegenerationRate() {
-        return manaRegenerationRate;
+    public Mana getMana() {
+        return mana;
     }
 
     public List<CultivationMethods.RequiredItem> getRequiredItems() {

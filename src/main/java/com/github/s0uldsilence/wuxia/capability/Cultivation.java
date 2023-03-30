@@ -76,11 +76,11 @@ public class Cultivation {
     }
 
     public int getMaxMana() {
-        return getCultivationStage().getManaCapacity();
+        return getCultivationStage().getMana().getMaxMana();
     }
 
     public int getManaRegenerationRate() {
-        return getCultivationStage().getManaRegenerationRate();
+        return getCultivationStage().getMana().getRegenRate();
     }
 
     public CultivationStage getCultivationStage() {
