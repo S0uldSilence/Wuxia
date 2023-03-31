@@ -17,6 +17,7 @@ public class Cultivation {
         this.cultivationExperience = 0;     // Default experience
         this.currentMana = 0;           // Default mana
         this.learnedMethodIds = new ArrayList<>();      // Default learned methods
+        learnedMethodIds.add(cultivationMethod.getId());
     }
 
     public CultivationMethod getCultivationMethod() {

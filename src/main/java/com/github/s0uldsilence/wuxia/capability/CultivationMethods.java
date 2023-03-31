@@ -39,11 +39,19 @@ public class CultivationMethods {
         ));
 
         // Create a CultivationMethod with the stages
-        CultivationMethod basicMethod = new CultivationMethod(0,"Basic Method", 1, Arrays.asList(mortalStage, earthlyStage));
-        CultivationMethod advancedMethod = new CultivationMethod(1,"Advanced Method", 1, Arrays.asList(mortalStage, earthlyStage, heavenlyStage));
+        CultivationMethod basicMethod = new CultivationMethod(0,"Basic Method", CultivationRarity.COMMON, Arrays.asList(mortalStage, earthlyStage));
+        CultivationMethod advancedMethod = new CultivationMethod(1,"Advanced Method", CultivationRarity.UNCOMMON, Arrays.asList(mortalStage, earthlyStage, heavenlyStage));
+        CultivationMethod advanced2Method = new CultivationMethod(2,"Advanced Method 2", CultivationRarity.RARE, Arrays.asList(mortalStage, earthlyStage, heavenlyStage));
+        CultivationMethod advanced3Method = new CultivationMethod(3,"Advanced Method 3", CultivationRarity.EPIC, Arrays.asList(mortalStage, earthlyStage, heavenlyStage));
+        CultivationMethod advanced4Method = new CultivationMethod(4,"Advanced Method 4", CultivationRarity.LEGENDARY, Arrays.asList(mortalStage, earthlyStage, heavenlyStage));
+        CultivationMethod advanced5Method = new CultivationMethod(5,"Advanced Method 5", CultivationRarity.LEGENDARY, Arrays.asList(mortalStage, earthlyStage, heavenlyStage));
         // Register the method
         CultivationMethods.registerMethod(basicMethod);
         CultivationMethods.registerMethod(advancedMethod);
+        CultivationMethods.registerMethod(advanced2Method);
+        CultivationMethods.registerMethod(advanced3Method);
+        CultivationMethods.registerMethod(advanced4Method);
+        CultivationMethods.registerMethod(advanced5Method);
     }
     public static String getMethodNameById(int id) {
         for (CultivationMethod method : methods.values()) {

@@ -50,7 +50,7 @@ public class SetCultivationMethodC2SPacket {
                     }
                     CultivationMethod newMethod = CultivationMethods.getMethodByName(methodName);
                     cultivation.setCultivationMethod(newMethod);
-                    player.sendSystemMessage(Component.literal("New Cultivation Method:" + cultivation.getCultivation().getCultivationMethod().getName()));
+                    player.sendSystemMessage(Component.literal("New Cultivation Method: " + cultivation.getCultivation().getCultivationMethod().getName()));
                     ModMessages.sendToPlayer(new CultivationDataSyncS2CPacket(cultivation.getCultivation()), player);
                     context.setPacketHandled(true);
                 } else {

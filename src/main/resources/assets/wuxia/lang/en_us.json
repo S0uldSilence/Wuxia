@@ -13,5 +13,7 @@
   "guis.wuxia.basicpillfurnace": "Basic Pill Furnace",
 
   "recipe_category.wuxia.basic_pill_furnace": "Basic Pill Furnace Recipes",
-  "screen.wuxia.cultivation_checker": "Your Current Cultivation"
+  "screen.wuxia.cultivation_checker": "Your Current Cultivation",
+  "gui.wuxia.prev_page" : "Previous Page",
+  "gui.wuxia.next_page" : "Next Page"
 }

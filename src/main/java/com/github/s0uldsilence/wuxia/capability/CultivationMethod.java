@@ -5,10 +5,11 @@ import java.util.List;
 public class CultivationMethod {
     private int id;
     private String name;
-    private int rarity;
+    //private int rarity;
+    private CultivationRarity rarity;
     private List<CultivationStage> stages;
 
-    public CultivationMethod(int id, String name, int rarity, List<CultivationStage> stages) {
+    public CultivationMethod(int id, String name, CultivationRarity rarity, List<CultivationStage> stages) {
         this.id = id;
         this.name = name;
         this.rarity = rarity;
@@ -22,7 +23,7 @@ public class CultivationMethod {
         return id;
     }
 
-    public int getRarity() {
+    public CultivationRarity getRarity() {
         return rarity;
     }
 
