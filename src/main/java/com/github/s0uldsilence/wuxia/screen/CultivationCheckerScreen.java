@@ -27,9 +27,13 @@ public class CultivationCheckerScreen extends Screen {
     private int maxPages = 0;
     private Button prevPageButton;
     private Button nextPageButton;
+
     private EditBox searchBox;
     private boolean showSearch = false;
     private String searchText = "";
+    private CultivationRarityFilter selectedRarityFilter = CultivationRarityFilter.ALL;
+    private Button filterButton;
+    private final List<Button> filterButtons = new ArrayList<>();
 
     public CultivationCheckerScreen() {
         super(Component.translatable("screen.wuxia.cultivation_checker"));
@@ -42,6 +46,31 @@ public class CultivationCheckerScreen extends Screen {
         createMethodButtons();
         createPageButtons();
         createSearchBox();
+        createFilterButtons();
+    }
+
+    private void createFilterButtons() {
+        int filterButtonWidth = 70;
+        int filterButtonHeight = 20;
+        int filterButtonSpacing = 5;
+        int filterButtonX = ((width/2 - WIDTH/2) + filterButtonSpacing);
+        int filterButtonY = 20;
+
+        for (CultivationRarityFilter filter : CultivationRarityFilter.values()) {
+            Button filterButton = Button.builder(Component.translatable("gui.wuxia.filter." + filter.name().toLowerCase()), button -> {
+                        selectedRarityFilter = filter;
+                        createMethodButtons();
+                    })
+                    .pos(filterButtonX, filterButtonY)
+                    .size(filterButtonWidth, filterButtonHeight)
+                    .build();
+            if (filter == selectedRarityFilter) {
+                filterButton.active = false;
+            }
+            addRenderableWidget(filterButton);
+            filterButtons.add(filterButton);
+            filterButtonY += filterButtonHeight + filterButtonSpacing;
+        }
     }
 
     @Override
@@ -56,19 +85,28 @@ public class CultivationCheckerScreen extends Screen {
         int methodButtonY = 50;
         int methodButtonSpacing = 25;
 
-
         for (Button button : methodButtons) {
             removeWidget(button);
         }
-
+        for (CultivationRarityFilter filter : CultivationRarityFilter.values()) {
+            for (Button button : filterButtons) {
+                if(button.getMessage().contains(Component.translatable("gui.wuxia.filter." + filter.name().toLowerCase()))) {
+                    // Update appearance of selected button
+                    button.active = filter != selectedRarityFilter;
+                }
+            }
+        }
         methodButtons.clear();
         List<Integer> learnedMethodIds = ClientCultivationData.getPlayerCultivation().getLearnedMethodIds();
         for (int methodId : learnedMethodIds) {
+            CultivationMethod method = CultivationMethods.getMethodById(methodId);
+            if (selectedRarityFilter != CultivationRarityFilter.ALL && method.getRarity().ordinal() != selectedRarityFilter.ordinal()) {
+                continue;
+            }
             String methodName = CultivationMethods.getMethodNameById(methodId);
             if (searchText.isEmpty() || methodName.toLowerCase().contains(searchText.toLowerCase())) {
                 if (methodButtons.size() >= currentPage * MAX_METHODS_PER_PAGE && methodButtons.size() < (currentPage + 1) * MAX_METHODS_PER_PAGE) {
                     methodButton = Button.builder(Component.literal(methodName), button -> {
-                        //ModMessages.sendToServer(new SetCultivationMethodC2SPacket(methodName));
                         ModMessages.sendToServer(new SetCultivationMethodByIdC2SPacket(methodId));
                     }).pos(methodButtonX, methodButtonY + methodButtonSpacing * methodButtons.size()).size(methodButtonWidth, methodButtonHeight).build();
                     addRenderableWidget(methodButton);

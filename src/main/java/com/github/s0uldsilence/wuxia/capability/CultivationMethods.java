@@ -92,6 +92,7 @@ public class CultivationMethods {
         tag.putString(key, value);
         return tag;
     }
+
     public static CompoundTag createIntNbt(String key, Integer value) {
         CompoundTag tag = new CompoundTag();
         tag.putInt(key, value);
