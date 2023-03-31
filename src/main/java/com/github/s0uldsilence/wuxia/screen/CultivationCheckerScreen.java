@@ -125,32 +125,10 @@ public class CultivationCheckerScreen extends Screen {
     }
 
     private void updateList() {
-        int methodButtonWidth = 110;
-        int methodButtonHeight = 20;
-        int methodButtonX = ((width/2 + width/4) - methodButtonWidth/2);
-        int methodButtonY = 50;
-        int methodButtonSpacing = 25;
-
         for (Button button : methodButtons) {
             removeWidget(button);
         }
-
-        methodButtons.clear();
-        List<Integer> learnedMethodIds = ClientCultivationData.getPlayerCultivation().getLearnedMethodIds();
-        for (int methodId : learnedMethodIds) {
-            String methodName = CultivationMethods.getMethodNameById(methodId);
-            if (searchText.isEmpty() || methodName.toLowerCase().contains(searchText.toLowerCase())) {
-                if (methodButtons.size() >= currentPage * MAX_METHODS_PER_PAGE && methodButtons.size() < (currentPage + 1) * MAX_METHODS_PER_PAGE) {
-                    methodButton = Button.builder(Component.literal(methodName), button -> {
-                        //ModMessages.sendToServer(new SetCultivationMethodC2SPacket(methodName));
-                        ModMessages.sendToServer(new SetCultivationMethodByIdC2SPacket(methodId));
-                    }).pos(methodButtonX, methodButtonY + methodButtonSpacing * methodButtons.size()).size(methodButtonWidth, methodButtonHeight).build();
-                    addRenderableWidget(methodButton);
-                    methodButtons.add(methodButton);
-                }
-            }
-        }
-        maxPages = (int) Math.ceil((double) methodButtons.size() / MAX_METHODS_PER_PAGE);
+        createMethodButtons();
     }
 
     @Override
