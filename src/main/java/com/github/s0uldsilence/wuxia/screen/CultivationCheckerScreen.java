@@ -111,7 +111,7 @@ public class CultivationCheckerScreen extends Screen {
         searchBox.setResponder(text -> {
             currentPage = 0;
             searchText = text;
-            updateList();
+            createMethodButtons();
         });
         addRenderableWidget(searchBox);
     }
@@ -123,14 +123,6 @@ public class CultivationCheckerScreen extends Screen {
         }
         return super.keyPressed(keyCode, scanCode, modifiers);
     }
-
-    private void updateList() {
-        for (Button button : methodButtons) {
-            removeWidget(button);
-        }
-        createMethodButtons();
-    }
-
     @Override
     public boolean charTyped(char codePoint, int modifiers) {
         if (searchBox.charTyped(codePoint, modifiers)) {
