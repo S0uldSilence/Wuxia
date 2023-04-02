@@ -15,7 +15,8 @@ public class ModCreativeModeTabs {
 
     @SubscribeEvent
     public static void registerCreativeModeTabs(CreativeModeTabEvent.Register event) {
-        WUXIA_TAB = event.registerCreativeModeTab(new ResourceLocation(Wuxia.MODID, "wuxia_tab"),
+        //WUXIA_TAB = event.registerCreativeModeTab(new ResourceLocation(Wuxia.MODID, "wuxia_tab"),
+        WUXIA_TAB = event.registerCreativeModeTab(new ResourceLocation(Wuxia.MODID + ":" + Wuxia.MODID),
                 builder -> builder.icon(() -> new ItemStack(ModItems.GREEN_JADE.get()))
                         .title(Component.translatable("creativemodetab.wuxia_tab")));
     }

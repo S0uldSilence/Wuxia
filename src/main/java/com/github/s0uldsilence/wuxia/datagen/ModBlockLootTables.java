@@ -1,6 +1,7 @@
 package com.github.s0uldsilence.wuxia.datagen;
 
 
+import com.github.s0uldsilence.wuxia.Wuxia;
 import com.github.s0uldsilence.wuxia.block.ModBlocks;
 import com.github.s0uldsilence.wuxia.item.ModItems;
 import net.minecraft.data.loot.BlockLootSubProvider;
@@ -17,9 +18,12 @@ import net.minecraft.world.level.storage.loot.functions.CopyNbtFunction;
 import net.minecraft.world.level.storage.loot.functions.SetContainerContents;
 import net.minecraft.world.level.storage.loot.providers.nbt.ContextNbtProvider;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class ModBlockLootTables extends BlockLootSubProvider {
     public ModBlockLootTables() {
@@ -30,10 +34,23 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.BASIC_PILL_FURNACE.get());
         dropSelf(ModBlocks.GREEN_JADE_ORE.get());
         dropSelf(ModBlocks.GREEN_JADE_BLOCK.get());
-        add(ModBlocks.GREEN_JADE_ORE.get(),
-                (block) -> createOreDrop(ModBlocks.GREEN_JADE_ORE.get(), ModItems.GREEN_JADE.get()));
-        add(ModBlocks.DEEPSLATE_GREEN_JADE_ORE.get(),
-                (block) -> createOreDrop(ModBlocks.DEEPSLATE_GREEN_JADE_ORE.get(), ModItems.GREEN_JADE.get()));
+
+        dropSelf(ModBlocks.FORMATION_CORE_BLOCK.get());
+        dropSelf(ModBlocks.AIR_ELEMENT_RUNE_BLOCK.get());
+        dropSelf(ModBlocks.WATER_ELEMENT_RUNE_BLOCK.get());
+        dropSelf(ModBlocks.FIRE_ELEMENT_RUNE_BLOCK.get());
+        dropSelf(ModBlocks.EARTH_ELEMENT_RUNE_BLOCK.get());
+        dropSelf(ModBlocks.DEATH_ELEMENT_RUNE_BLOCK.get());
+        dropSelf(ModBlocks.LIFE_ELEMENT_RUNE_BLOCK.get());
+        dropSelf(ModBlocks.SPACE_ELEMENT_RUNE_BLOCK.get());
+        dropSelf(ModBlocks.TIME_ELEMENT_RUNE_BLOCK.get());
+
+
+        //CHANGE
+        dropSelf(ModBlocks.DEEPSLATE_GREEN_JADE_ORE.get());
+        dropSelf(ModBlocks.GREEN_JADE_ORE.get());
+        dropSelf(ModBlocks.MANA_CRYSTAL_ORE.get());
+
     }
     @Override
     protected Iterable<Block> getKnownBlocks() {

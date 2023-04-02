@@ -52,6 +52,9 @@ minecraft {
 
                         // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             property 'forge.enabledGameTestNamespaces', 'wuxia'
+
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
             
             mods {
                 wuxia {
@@ -118,6 +121,7 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
+    //JEI
     maven {
         // location of the maven that hosts JEI files before January 2023
         name = "Progwml6's maven"
@@ -133,6 +137,18 @@ repositories {
         name = "ModMaven"
         url = "https://modmaven.dev"
     }
+    //Modonomicon
+    maven {
+        name = "KliKli Dev Repsy Maven"
+        url = "https://repo.repsy.io/mvn/klikli-dev/mods"
+    }
+
+    //Curios
+    maven {
+        url = "https://maven.theillusivec4.top/"
+    }
+
+
 }
 
 dependencies {
@@ -150,6 +166,17 @@ dependencies {
     compileOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}"))
     // at runtime, use the full JEI jar for Forge
     runtimeOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}"))
+
+    //Modonomicon
+    //compileOnly fg.deobf("com.klikli_dev:modonomicon:${modonomicon_mc_version}-${modonomicon_version}")
+    //runtimeOnly fg.deobf("com.klikli_dev:modonomicon:${modonomicon_mc_version}-${modonomicon_version}")
+    implementation fg.deobf("com.klikli_dev:modonomicon:${modonomicon_mc_version}-${modonomicon_version}")
+
+    //Curios
+
+    //runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.3-5.1.4.1")
+    //compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.3-5.1.4.1:api")
+
 
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency

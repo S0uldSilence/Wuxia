@@ -16,7 +16,9 @@ public class ModBlockEntities {
             BLOCK_ENTITIES.register("basic_pill_furnace", () ->
                     BlockEntityType.Builder.of(BasicPillFurnaceBlockEntity::new,
                             ModBlocks.BASIC_PILL_FURNACE.get()).build(null));
-
+    public static final RegistryObject<BlockEntityType<FormationCoreBlockEntity>> FORMATION_CORE_BLOCK_ENTITY =
+            BLOCK_ENTITIES.register("formation_core_block_entity",
+                    () -> BlockEntityType.Builder.of(FormationCoreBlockEntity::new, ModBlocks.FORMATION_CORE_BLOCK.get()).build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

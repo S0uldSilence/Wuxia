@@ -1,4 +1,4 @@
-package com.github.s0uldsilence.wuxia.screen;
+package com.github.s0uldsilence.wuxia.screen.TileEntities;
 
 import com.github.s0uldsilence.wuxia.Wuxia;
 import com.mojang.blaze3d.systems.RenderSystem;

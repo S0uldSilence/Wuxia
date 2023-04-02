@@ -1,7 +1,7 @@
 package com.github.s0uldsilence.wuxia.block.entity;
 
 import com.github.s0uldsilence.wuxia.recipe.BasicPillFurnaceRecipe;
-import com.github.s0uldsilence.wuxia.screen.BasicPillFurnaceMenu;
+import com.github.s0uldsilence.wuxia.screen.TileEntities.BasicPillFurnaceMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -157,7 +157,6 @@ public class BasicPillFurnaceBlockEntity extends BlockEntity implements MenuProv
             pEntity.resetProgress();
         }
     }
-
     private static boolean hasRecipe(BasicPillFurnaceBlockEntity entity) {
         Level level = entity.level;
         SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());

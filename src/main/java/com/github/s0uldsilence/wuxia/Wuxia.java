@@ -3,13 +3,14 @@ package com.github.s0uldsilence.wuxia;
 import com.github.s0uldsilence.wuxia.block.ModBlocks;
 import com.github.s0uldsilence.wuxia.block.entity.ModBlockEntities;
 import com.github.s0uldsilence.wuxia.capability.CultivationMethods;
+import com.github.s0uldsilence.wuxia.datagen.DataGenerators;
+import com.github.s0uldsilence.wuxia.datagen.WuxiaTomeProvider;
 import com.github.s0uldsilence.wuxia.item.ModCreativeModeTabs;
 import com.github.s0uldsilence.wuxia.item.ModItems;
 import com.github.s0uldsilence.wuxia.networking.ModMessages;
 import com.github.s0uldsilence.wuxia.recipe.ModRecipes;
-import com.github.s0uldsilence.wuxia.screen.BasicPillFurnaceScreen;
+import com.github.s0uldsilence.wuxia.screen.TileEntities.BasicPillFurnaceScreen;
 import com.github.s0uldsilence.wuxia.screen.ModMenuTypes;
-import com.mojang.logging.LogUtils;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.world.item.*;
 import net.minecraftforge.api.distmarker.Dist;
@@ -33,11 +34,11 @@ public class Wuxia {
     //private static final Logger LOGGER = LogUtils.getLogger();
     public Wuxia() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+
 
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);

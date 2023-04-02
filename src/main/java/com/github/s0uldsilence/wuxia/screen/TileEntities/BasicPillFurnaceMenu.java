@@ -1,7 +1,8 @@
-package com.github.s0uldsilence.wuxia.screen;
+package com.github.s0uldsilence.wuxia.screen.TileEntities;
 
 import com.github.s0uldsilence.wuxia.block.ModBlocks;
 import com.github.s0uldsilence.wuxia.block.entity.BasicPillFurnaceBlockEntity;
+import com.github.s0uldsilence.wuxia.screen.ModMenuTypes;
 import net.minecraft.network.Connection;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
@@ -32,7 +33,6 @@ public class BasicPillFurnaceMenu extends AbstractContainerMenu {
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        //this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(handler -> {
             this.addSlot(new SlotItemHandler(handler, 0, 12, 15));
             this.addSlot(new SlotItemHandler(handler, 1, 86, 15));
