@@ -48,5 +48,12 @@ public class Formations {
         waterFormation.addBlock(ModBlocks.EARTH_ELEMENT_RUNE_BLOCK.get(), 0, 4, 1);
         waterFormation.addBlock(ModBlocks.EARTH_ELEMENT_RUNE_BLOCK.get(), 0, 5, -1);
         Formations.registerFormation(waterFormation);
+
+        Formation myFormation = new Formation("My Formation", 3);
+        myFormation.addBlock(ModBlocks.GREEN_JADE_BLOCK.get(), 0, 1, 0);
+        myFormation.addBlock(ModBlocks.GREEN_JADE_BLOCK.get(), 0, 2, 0);
+// Add more blocks to the formation as necessary
+
+        Formations.registerFormation(myFormation);
     }
 }

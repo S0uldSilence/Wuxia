@@ -5,6 +5,7 @@ import com.github.s0uldsilence.wuxia.block.entity.ModBlockEntities;
 import com.github.s0uldsilence.wuxia.capability.CultivationMethods;
 import com.github.s0uldsilence.wuxia.datagen.DataGenerators;
 import com.github.s0uldsilence.wuxia.datagen.WuxiaTomeProvider;
+import com.github.s0uldsilence.wuxia.formation.Formations;
 import com.github.s0uldsilence.wuxia.item.ModCreativeModeTabs;
 import com.github.s0uldsilence.wuxia.item.ModItems;
 import com.github.s0uldsilence.wuxia.networking.ModMessages;
@@ -55,7 +56,7 @@ public class Wuxia {
     private void commonSetup(final FMLCommonSetupEvent event) {
         ModMessages.register();
         CultivationMethods.registerCultivationMethods();
-
+        Formations.registerFormations();
     }
 
     private void addCreative(CreativeModeTabEvent.BuildContents event) {

@@ -1,9 +1,11 @@
 package com.github.s0uldsilence.wuxia.block.custom;
 
 import com.github.s0uldsilence.wuxia.block.entity.BasicPillFurnaceBlockEntity;
+import com.github.s0uldsilence.wuxia.block.entity.FormationCoreBlockEntity;
 import com.github.s0uldsilence.wuxia.formation.Formation;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -18,11 +20,14 @@ import net.minecraftforge.network.NetworkHooks;
 
 public class FormationCoreBlock extends Block {
 
-    @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos,
                                  Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         if (!pLevel.isClientSide()) {
-            // Open a screen to display the formation information
+            FormationCoreBlockEntity blockEntity = (FormationCoreBlockEntity) pLevel.getBlockEntity(pPos);
+            if (blockEntity.hasValidFormation()) {
+                // Open a screen to display the formation information
+                pPlayer.sendSystemMessage(Component.literal("valid formation"));
+            }
         }
 
         return InteractionResult.sidedSuccess(pLevel.isClientSide());
