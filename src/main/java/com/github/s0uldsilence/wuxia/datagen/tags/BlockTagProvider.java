@@ -26,6 +26,9 @@ public class BlockTagProvider extends BlockTagsProvider {
     protected void addTags(HolderLookup.Provider pProvider) {
     this.tag(ModTags.Blocks.DOWSING_ROD_VALUABLES)
             .add(ModBlocks.MANA_CRYSTAL_ORE.get());
+
+    this.tag(ModTags.Blocks.FORMATION_UPGRADE_RUNE);
+
     }
     @Override
     public String getName() {

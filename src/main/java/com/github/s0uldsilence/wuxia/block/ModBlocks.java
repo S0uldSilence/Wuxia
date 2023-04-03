@@ -28,9 +28,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> GREEN_JADE_BLOCK = registerBlock("green_jade_block",
             () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
                     .strength(6f).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> FORMATION_CORE_BLOCK = registerBlock("formation_core_block",
-            () -> new FormationCoreBlock(BlockBehaviour.Properties.of(Material.METAL)
-                    .strength(6f).requiresCorrectToolForDrops()));
+
 
     public static final RegistryObject<Block> AIR_ELEMENT_RUNE_BLOCK = registerBlock("air_element_rune_block",
             () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
@@ -77,8 +75,9 @@ public class ModBlocks {
             () -> new BasicPillFurnaceBlock(BlockBehaviour.Properties.of(Material.METAL)
                     .strength(6f).requiresCorrectToolForDrops()));
 
-
-
+    public static final RegistryObject<Block> FORMATION_CORE = registerBlock("formation_core",
+            () -> new FormationCoreBlock(BlockBehaviour.Properties.of(Material.METAL)
+                    .strength(6f).requiresCorrectToolForDrops()));
 
 
 

@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "wuxia:formation_core_block"
+          "name": "wuxia:formation_core"
         }
       ],
       "rolls": 1.0

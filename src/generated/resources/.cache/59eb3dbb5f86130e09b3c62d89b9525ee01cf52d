@@ -1,11 +1,11 @@
-// 1.19.3	2023-04-02T13:53:11.7788714	Loot Tables
+// 1.19.3	2023-04-03T16:19:18.0025444	Loot Tables
 683efb38b97399a5a8ba90caf9bc5ee1a9d91b1f data/wuxia/loot_tables/blocks/air_element_rune_block.json
 9b99b41e2b41d490031c013f8b8abf8d7447ec09 data/wuxia/loot_tables/blocks/basic_pill_furnace.json
 a2eb71daf748daad77e8ab1c680c3cba6ad56251 data/wuxia/loot_tables/blocks/death_element_rune_block.json
 ccf4c753682d6acc31cf958dfe989e4dddbdc8e5 data/wuxia/loot_tables/blocks/deepslate_green_jade_ore.json
 5800bd97674c6bf93104d64aa74fb8fd4cfd328e data/wuxia/loot_tables/blocks/earth_element_rune_block.json
 1674ef8931164fc7b7f0c211114c6fd27ba30504 data/wuxia/loot_tables/blocks/fire_element_rune_block.json
-8a752ed1c0aba96bc4049e8ba603c96bc32a015a data/wuxia/loot_tables/blocks/formation_core_block.json
+d8b7193067541a3480c52cdd661114fcfa395900 data/wuxia/loot_tables/blocks/formation_core.json
 c8449c696442f73c6ba9e43fd1b41923b6946f3d data/wuxia/loot_tables/blocks/green_jade_block.json
 96e20dbe0bed0ed14567e7b6133b57eeffb78ab7 data/wuxia/loot_tables/blocks/green_jade_ore.json
 c3079bb95f6d5f4c78c2d0d29f2d25313ec60c00 data/wuxia/loot_tables/blocks/life_element_rune_block.json

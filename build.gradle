@@ -53,6 +53,8 @@ minecraft {
                         // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             property 'forge.enabledGameTestNamespaces', 'wuxia'
 
+            //property 'mixin.env.remapRefMap', 'true'
+            //property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
             
@@ -174,8 +176,8 @@ dependencies {
 
     //Curios
 
-    //runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.3-5.1.4.1")
-    //compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.3-5.1.4.1:api")
+    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.3-5.1.1.2")
+    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.3-5.1.1.2:api")
 
 
     // Real mod deobf dependency examples - these get remapped to your current mappings

@@ -12,7 +12,7 @@ import net.minecraftforge.common.Tags;
 public class ModTags {
     public static class Blocks {
         public static final TagKey<Block> DOWSING_ROD_VALUABLES = tag("dowsing_rod_valuables");
-
+        public static final TagKey<Block> FORMATION_UPGRADE_RUNE = tag("formation_upgrade_rune");
         private static TagKey<Block> tag(String name) {
             return BlockTags.create(new ResourceLocation(Wuxia.MODID, name));
         }
@@ -23,8 +23,12 @@ public class ModTags {
     }
     public static class Items {
         public static final TagKey<Item> DOWSING_ROD_VALUABLES = tag("dowsing_rod_valuables_item");
+        public static final TagKey<Item> RING = curiostag("ring");
         private static TagKey<Item> tag(String name) {
             return ItemTags.create(new ResourceLocation(Wuxia.MODID, name));
+        }
+        private static TagKey<Item> curiostag(String name) {
+            return ItemTags.create(new ResourceLocation("curios", name));
         }
 
         private static TagKey<Item> forgeTag(String name) {

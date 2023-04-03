@@ -35,7 +35,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.GREEN_JADE_ORE.get());
         dropSelf(ModBlocks.GREEN_JADE_BLOCK.get());
 
-        dropSelf(ModBlocks.FORMATION_CORE_BLOCK.get());
+        dropSelf(ModBlocks.FORMATION_CORE.get());
         dropSelf(ModBlocks.AIR_ELEMENT_RUNE_BLOCK.get());
         dropSelf(ModBlocks.WATER_ELEMENT_RUNE_BLOCK.get());
         dropSelf(ModBlocks.FIRE_ELEMENT_RUNE_BLOCK.get());

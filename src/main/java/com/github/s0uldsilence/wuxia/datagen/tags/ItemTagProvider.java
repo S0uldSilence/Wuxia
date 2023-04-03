@@ -2,6 +2,7 @@ package com.github.s0uldsilence.wuxia.datagen.tags;
 
 import com.github.s0uldsilence.wuxia.Wuxia;
 import com.github.s0uldsilence.wuxia.block.ModBlocks;
+import com.github.s0uldsilence.wuxia.item.ModItems;
 import com.github.s0uldsilence.wuxia.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;
@@ -29,6 +30,8 @@ public class ItemTagProvider extends ItemTagsProvider {
     protected void addTags(HolderLookup.Provider pProvider) {
         this.tag(ModTags.Items.DOWSING_ROD_VALUABLES)
                 .add(ModBlocks.MANA_CRYSTAL_ORE.get().asItem());
+        this.tag(ModTags.Items.RING)
+                .add(ModItems.CULTIVATION_CHECKER.get());
     }
 
     @Override

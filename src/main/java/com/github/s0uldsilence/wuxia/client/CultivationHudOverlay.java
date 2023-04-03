@@ -23,11 +23,11 @@ public class CultivationHudOverlay {
             int experience = ClientCultivationData.getPlayerCultivation().getCultivationExperience();
             int experienceRequired = currentStage.getExperienceRequired();
             int currentMana = ClientCultivationData.getPlayerCultivation().getCurrentMana();
-            int maxMana = currentStage.getMana().getMaxMana();
+            int maxMana = ClientCultivationData.getPlayerCultivation().getMaxMana();
             int manaRegenRate = currentStage.getMana().getRegenRate();
             GuiComponent.drawString(poseStack, Minecraft.getInstance().font, Component.nullToEmpty(methodName), x, y, 0xFFFFFF);
             GuiComponent.drawString(poseStack, Minecraft.getInstance().font, Component.nullToEmpty(stageName), x, y + 10, 0xFFFFFF);
-            GuiComponent.drawString(poseStack, Minecraft.getInstance().font, Component.nullToEmpty(experience + " / " + experienceRequired), x, y + 20, 0xFFFFFF);
+            GuiComponent.drawString(poseStack, Minecraft.getInstance().font, Component.nullToEmpty("Experience: " + experience + " / " + experienceRequired), x, y + 20, 0xFFFFFF);
             GuiComponent.drawString(poseStack, Minecraft.getInstance().font, Component.nullToEmpty("Mana: " + currentMana + " / " + maxMana), x, y + 30, 0xFFFFFF);
             GuiComponent.drawString(poseStack, Minecraft.getInstance().font, Component.nullToEmpty("Mana Regen: " + manaRegenRate), x, y + 40, 0xFFFFFF);
         });
