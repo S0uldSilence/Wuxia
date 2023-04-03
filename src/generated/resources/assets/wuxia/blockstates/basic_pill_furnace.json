@@ -1,19 +1,7 @@
 {
   "variants": {
-    "facing=east": {
-      "model": "wuxia:block/basic_pill_furnace",
-      "y": 90
-    },
-    "facing=north": {
+    "": {
       "model": "wuxia:block/basic_pill_furnace"
-    },
-    "facing=south": {
-      "model": "wuxia:block/basic_pill_furnace",
-      "y": 180
-    },
-    "facing=west": {
-      "model": "wuxia:block/basic_pill_furnace",
-      "y": 270
     }
   }
 }

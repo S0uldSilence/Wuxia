@@ -23,7 +23,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
 
-
         // ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.BLACK_OPAL.get())
         //         .requires(ModBlocks.BLACK_OPAL_BLOCK.get())
         //         .unlockedBy("has_black_opal_block", inventoryTrigger(ItemPredicate.Builder.item()

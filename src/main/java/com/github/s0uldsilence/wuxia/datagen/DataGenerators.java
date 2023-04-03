@@ -34,12 +34,8 @@ public class DataGenerators {
         generator.addProvider(true, blockTagGen);
         generator.addProvider(true, new ItemTagProvider(packOutput, lookupProvider, blockTagGen, existingFileHelper));
 
-        /*var langProvider = new EnUsProvider(packOutput, Wuxia.MODID);
-
-        generator.addProvider(event.includeServer(), new DemoBookProvider(packOutput, Wuxia.MODID, langProvider));
-        generator.addProvider(event.includeClient(), langProvider);*/
         var langProvider = new EnUsProvider(packOutput, Wuxia.MODID);
-        generator.addProvider(event.includeServer(), new DemoBookProvider(packOutput, Wuxia.MODID, langProvider));
+        generator.addProvider(event.includeServer(), new WuxiaTomeProvider(packOutput, Wuxia.MODID, langProvider));
         //Important: Lang provider needs to be added after the book provider to process the texts added by the book provider
         generator.addProvider(event.includeClient(), langProvider);
 

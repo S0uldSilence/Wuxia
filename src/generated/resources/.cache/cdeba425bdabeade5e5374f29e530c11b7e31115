@@ -1,14 +1,15 @@
-// 1.19.3	2023-03-22T16:40:40.6433846	Block States: wuxia
-f53dbb31dc5ae238f0515779ea18c7ec9d11c328 assets/wuxia/blockstates/basic_pill_furnace.json
+// 1.19.3	2023-04-03T12:10:24.3045615	Block States: wuxia
+6fce2afe81d61442cfbb7c15ce124f391d72746e assets/wuxia/blockstates/basic_pill_furnace.json
 76143eee3148bdaab7f0935794ba1f31f7677a01 assets/wuxia/blockstates/deepslate_green_jade_ore.json
 af3d03fccae4d36051eb846587ccba336e3e046b assets/wuxia/blockstates/green_jade_block.json
 21f62f66ba24c744fcdde9bffc3f7d482e394229 assets/wuxia/blockstates/green_jade_ore.json
 1b64a00b9e9d1ac01a143128c2fa726d33f3541a assets/wuxia/blockstates/mana_crystal_ore.json
-a63588ddf23e9234d72d710d9e3dd3edf99f8edd assets/wuxia/models/block/basic_pill_furnace.json
+7efdb969657261e10130e142761fe9e43c156ced assets/wuxia/models/block/basic_pill_furnace.json
 e36c4701ac3025546c9e07b06d9b5044fc043a10 assets/wuxia/models/block/deepslate_green_jade_ore.json
 c24d2882c0f9b15f37ffb194f68c0863dc4529ff assets/wuxia/models/block/green_jade_block.json
 5faba26ecb82ce682a6b97f8ddde255630ed8f6d assets/wuxia/models/block/green_jade_ore.json
 13c7fa7e63d0a9f8b464b21ceed07556f4eed691 assets/wuxia/models/block/mana_crystal_ore.json
+4aef5b0e4585736e8cfc4a4e7f9f92c6c1d71f1f assets/wuxia/models/item/basic_pill_furnace.json
 055037614cc7f937ec2bc4fabc3af51501c46037 assets/wuxia/models/item/deepslate_green_jade_ore.json
 be47be88e1c2c1f27329803d70421891e5789688 assets/wuxia/models/item/green_jade_block.json
 0e57a45841a95962a90b4431bb249661989d1676 assets/wuxia/models/item/green_jade_ore.json

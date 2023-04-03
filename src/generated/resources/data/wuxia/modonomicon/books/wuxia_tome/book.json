@@ -31,8 +31,8 @@
     "texture_height": 256,
     "texture_width": 256
   },
-  "model": "modonomicon:modonomicon_red",
-  "name": "book.wuxia.demo.name",
+  "model": "modonomicon:modonomicon_purple",
+  "name": "book.wuxia.wuxia_tome.name",
   "read_all_button_y_offset": 0,
   "right_frame_overlay": {
     "frame_height": 70,
@@ -45,7 +45,7 @@
   },
   "search_button_x_offset": 0,
   "search_button_y_offset": 0,
-  "tooltip": "book.wuxia.demo.tooltip",
+  "tooltip": "book.wuxia.wuxia_tome.tooltip",
   "top_frame_overlay": {
     "frame_height": 7,
     "frame_width": 72,

@@ -55,6 +55,7 @@ public class Wuxia {
     private void commonSetup(final FMLCommonSetupEvent event) {
         ModMessages.register();
         CultivationMethods.registerCultivationMethods();
+
     }
 
     private void addCreative(CreativeModeTabEvent.BuildContents event) {
