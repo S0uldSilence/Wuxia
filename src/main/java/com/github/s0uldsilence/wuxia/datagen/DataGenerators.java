@@ -2,6 +2,8 @@ package com.github.s0uldsilence.wuxia.datagen;
 
 import com.github.s0uldsilence.wuxia.Wuxia;
 import com.github.s0uldsilence.wuxia.datagen.Providers.EnUsProvider;
+import com.github.s0uldsilence.wuxia.datagen.modonomicon.MultiBlockProvider;
+import com.github.s0uldsilence.wuxia.datagen.modonomicon.WuxiaTomeProvider;
 import com.github.s0uldsilence.wuxia.datagen.tags.BlockTagProvider;
 import com.github.s0uldsilence.wuxia.datagen.tags.ItemTagProvider;
 import net.minecraft.data.DataGenerator;

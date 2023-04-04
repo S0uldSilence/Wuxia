@@ -5,6 +5,7 @@ import com.github.s0uldsilence.wuxia.block.entity.BasicPillFurnaceBlockEntity;
 import com.github.s0uldsilence.wuxia.block.entity.FormationCoreBlockEntity;
 import com.github.s0uldsilence.wuxia.block.entity.ModBlockEntities;
 import com.github.s0uldsilence.wuxia.formation.Formation;
+import com.github.s0uldsilence.wuxia.screen.TileEntities.FormationCoreMenu;
 import com.klikli_dev.modonomicon.api.ModonomiconAPI;
 import com.klikli_dev.modonomicon.api.multiblock.Multiblock;
 import net.minecraft.client.Minecraft;
@@ -21,6 +22,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.FurnaceBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -61,14 +63,22 @@ public class FormationCoreBlock extends BaseEntityBlock {
     }
 
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-
+        if (!pLevel.isClientSide()) {
+            BlockEntity entity = pLevel.getBlockEntity(pPos);
             Multiblock formation = ModonomiconAPI.get().getMultiblock(new ResourceLocation(Wuxia.MODID, "placement/formation"));
             Multiblock formations = ModonomiconAPI.get().getMultiblock(new ResourceLocation(Wuxia.MODID, "placement/formation"));
             if (formation.validate(pLevel, pPos) != null) {
+                if(entity instanceof FormationCoreBlockEntity) {
+                    NetworkHooks.openScreen(((ServerPlayer)pPlayer), (FormationCoreBlockEntity)entity, pPos);
+                } else {
+                    throw new IllegalStateException("Our Container provider is missing!");
+                }
                 pPlayer.sendSystemMessage(Component.literal("Valid Multiblock"));
+                //NetworkHooks.openScreen(((ServerPlayer) pPlayer), (FormationCoreBlockEntity) entity, pPos);
             } else {
                 pPlayer.sendSystemMessage(Component.literal("Invalid Multiblock"));
             }
+        }
 
 
         return InteractionResult.sidedSuccess(pLevel.isClientSide());

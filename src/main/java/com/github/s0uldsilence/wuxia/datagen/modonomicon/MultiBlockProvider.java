@@ -1,4 +1,4 @@
-package com.github.s0uldsilence.wuxia.datagen;
+package com.github.s0uldsilence.wuxia.datagen.modonomicon;
 
 import com.github.s0uldsilence.wuxia.Wuxia;
 import com.github.s0uldsilence.wuxia.block.ModBlocks;
@@ -19,6 +19,22 @@ public class MultiBlockProvider extends MultiblockProvider {
                         .layer("0")
                         .layer("b")
                         .block('b', ModBlocks.GREEN_JADE_BLOCK)
+                        .block('0', ModBlocks.FORMATION_CORE)
+                        .build()
+        );
+        this.add(new ResourceLocation(Wuxia.MODID, "placement/fire_formation"),
+                new DenseMultiblockBuilder()
+                        .layer("0")
+                        .layer("b")
+                        .block('b', ModBlocks.MANA_CRYSTAL_ORE)
+                        .block('0', ModBlocks.FORMATION_CORE)
+                        .build()
+        );
+        this.add(new ResourceLocation(Wuxia.MODID, "placement/ice_formation"),
+                new DenseMultiblockBuilder()
+                        .layer("0")
+                        .layer("b")
+                        .block('b', ModBlocks.DEEPSLATE_GREEN_JADE_ORE)
                         .block('0', ModBlocks.FORMATION_CORE)
                         .build()
         );

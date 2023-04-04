@@ -1,6 +1,15 @@
 package com.github.s0uldsilence.wuxia.formation;
 
+import com.github.s0uldsilence.wuxia.Wuxia;
 import com.github.s0uldsilence.wuxia.block.ModBlocks;
+import com.klikli_dev.modonomicon.api.ModonomiconAPI;
+import com.klikli_dev.modonomicon.api.multiblock.Multiblock;
+import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,52 +17,51 @@ import java.util.List;
 import java.util.Map;
 
 public class Formations {
-    private static final Map<Integer, Formation> formationsById = new HashMap<>();
     private static final Map<String, Formation> formationsByName = new HashMap<>();
 
     public static void registerFormation(Formation formation) {
-        formationsById.put(formation.getId(), formation);
         formationsByName.put(formation.getName(), formation);
-    }
-
-    public static Formation getFormationById(int id) {
-        return formationsById.get(id);
-    }
-
-    public static Formation getFormationByName(String name) {
-        return formationsByName.get(name);
-    }
-
-    public static List<Integer> getRegisteredFormationIds() {
-        return new ArrayList<>(formationsById.keySet());
     }
 
     public static List<String> getRegisteredFormationNames() {
         return new ArrayList<>(formationsByName.keySet());
     }
 
+    public static List<String> getRegisteredFormationPaths() {
+        List<String> formationPaths = new ArrayList<>();
+        for (Formation formation : formationsByName.values()) {
+            formationPaths.add(formation.getPath());
+        }
+        return formationPaths;
+    }
+
     public static void registerFormations() {
-        Formation fireFormation = new Formation("Fire Formation", 1);
-        fireFormation.addBlock(ModBlocks.FIRE_ELEMENT_RUNE_BLOCK.get(), 0, 1, 0);
-        fireFormation.addBlock(ModBlocks.FIRE_ELEMENT_RUNE_BLOCK.get(), 0, 2, 0);
-        fireFormation.addBlock(ModBlocks.FIRE_ELEMENT_RUNE_BLOCK.get(), 0, 3, 0);
-        fireFormation.addBlock(ModBlocks.EARTH_ELEMENT_RUNE_BLOCK.get(), 0, 4, 0);
-        fireFormation.addBlock(ModBlocks.EARTH_ELEMENT_RUNE_BLOCK.get(), 0, 5, 0);
+        Formation fireFormation = new Formation("Fire Formation", "placement/fire_formation");
         Formations.registerFormation(fireFormation);
 
-        Formation waterFormation = new Formation("Water Formation", 2);
-        waterFormation.addBlock(ModBlocks.WATER_ELEMENT_RUNE_BLOCK.get(), 0, 1, 0);
-        waterFormation.addBlock(ModBlocks.WATER_ELEMENT_RUNE_BLOCK.get(), 0, 2, 0);
-        waterFormation.addBlock(ModBlocks.WATER_ELEMENT_RUNE_BLOCK.get(), 0, 3, 0);
-        waterFormation.addBlock(ModBlocks.EARTH_ELEMENT_RUNE_BLOCK.get(), 0, 4, 1);
-        waterFormation.addBlock(ModBlocks.EARTH_ELEMENT_RUNE_BLOCK.get(), 0, 5, -1);
+        Formation waterFormation = new Formation("Water Formation", "placement/water_formation");
         Formations.registerFormation(waterFormation);
 
-        Formation myFormation = new Formation("My Formation", 3);
-        myFormation.addBlock(ModBlocks.GREEN_JADE_BLOCK.get(), 0, 1, 0);
-        myFormation.addBlock(ModBlocks.GREEN_JADE_BLOCK.get(), 0, 2, 0);
-// Add more blocks to the formation as necessary
+        Formation iceFormation = new Formation("My Formation", "placement/ice_formation");
+        Formations.registerFormation(iceFormation);
+    }
 
-        Formations.registerFormation(myFormation);
+    public static String getValidFormationPath(Level level, BlockPos pos){
+        for (String path : getRegisteredFormationPaths()) {
+            Multiblock formation = ModonomiconAPI.get().getMultiblock(new ResourceLocation(Wuxia.MODID, path));
+            if (formation.validate(level, pos) != null) {
+                return path;
+            }
+        }
+        return null;
+    }
+    public static String getValidFormationName(Level level, BlockPos pos) {
+        for (Formation formation : formationsByName.values()) {
+            Multiblock multiblock = ModonomiconAPI.get().getMultiblock(new ResourceLocation(Wuxia.MODID, formation.getPath()));
+            if (multiblock.validate(level, pos) != null) {
+                return formation.getName();
+            }
+        }
+        return null;
     }
 }

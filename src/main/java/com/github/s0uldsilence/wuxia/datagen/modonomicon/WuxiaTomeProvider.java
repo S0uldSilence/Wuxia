@@ -1,4 +1,4 @@
-package com.github.s0uldsilence.wuxia.datagen;
+package com.github.s0uldsilence.wuxia.datagen.modonomicon;
 
 import com.github.s0uldsilence.wuxia.Wuxia;
 import com.klikli_dev.modonomicon.api.ModonomiconAPI;

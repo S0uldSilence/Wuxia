@@ -1,5 +1,6 @@
 package com.github.s0uldsilence.wuxia.formation;
 
+import com.klikli_dev.modonomicon.api.multiblock.Multiblock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Block;
 
@@ -7,36 +8,17 @@ import java.util.HashMap;
 
 public class Formation {
     private String name;
-    private int id;
-    private HashMap<BlockPos, Block> blocks;
+    private String path;
 
-    public Formation(String name, int id) {
+    public Formation(String name, String path) {
         this.name = name;
-        this.id = id;
-        blocks = new HashMap<BlockPos, Block>();
-    }
-
-    public void addBlock(Block block, int x, int y, int z) {
-        blocks.put(new BlockPos(x, y, z), block);
-    }
-
-    public boolean contains(Block block, int x, int y, int z) {
-        return blocks.containsKey(new BlockPos(x, y, z)) && blocks.get(new BlockPos(x, y, z)) == block;
-    }
-
-    public int getSize() {
-        return blocks.size();
-    }
-
-    public HashMap<BlockPos, Block> getBlocks() {
-        return blocks;
+        this.path = path;
     }
 
     public String getName() {
         return name;
     }
-
-    public int getId() {
-        return id;
+    public String getPath() {
+        return path;
     }
 }
