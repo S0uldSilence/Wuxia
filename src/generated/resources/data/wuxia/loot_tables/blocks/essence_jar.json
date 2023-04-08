@@ -16,8 +16,23 @@
               "ops": [
                 {
                   "op": "replace",
-                  "source": "essenceStorage",
-                  "target": "BlockEntityTag.essenceStorage"
+                  "source": "essence",
+                  "target": "BlockEntityTag.essence"
+                },
+                {
+                  "op": "replace",
+                  "source": "essenceCapacity",
+                  "target": "BlockEntityTag.essenceCapacity"
+                },
+                {
+                  "op": "replace",
+                  "source": "essenceMaxReceive",
+                  "target": "BlockEntityTag.essenceMaxReceive"
+                },
+                {
+                  "op": "replace",
+                  "source": "essenceMaxExtract",
+                  "target": "BlockEntityTag.essenceMaxExtract"
                 }
               ],
               "source": "block_entity"

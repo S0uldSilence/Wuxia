@@ -122,6 +122,7 @@ public class FormationCoreBE extends BlockEntity implements MenuProvider {
         pEntity.tickCounter = 0;
 
         BlockPos blockAbovePos = pos.above(3); // get the position of the block 3 blocks above
+        BlockPos blockBelowPos = pos.below(3); // get the position of the block 3 blocks below
         BlockState blockAboveState = level.getBlockState(blockAbovePos);
         BlockEntity blockAboveEntity = level.getBlockEntity(blockAbovePos);
         ServerLevel serverLevel = (ServerLevel) level;
