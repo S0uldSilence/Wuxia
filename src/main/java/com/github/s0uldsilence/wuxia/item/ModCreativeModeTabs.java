@@ -1,6 +1,7 @@
 package com.github.s0uldsilence.wuxia.item;
 
 import com.github.s0uldsilence.wuxia.Wuxia;
+import com.github.s0uldsilence.wuxia.setup.Registration;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
@@ -17,7 +18,7 @@ public class ModCreativeModeTabs {
     public static void registerCreativeModeTabs(CreativeModeTabEvent.Register event) {
         //WUXIA_TAB = event.registerCreativeModeTab(new ResourceLocation(Wuxia.MODID, "wuxia_tab"),
         WUXIA_TAB = event.registerCreativeModeTab(new ResourceLocation(Wuxia.MODID + ":" + Wuxia.MODID),
-                builder -> builder.icon(() -> new ItemStack(ModItems.GREEN_JADE.get()))
+                builder -> builder.icon(() -> new ItemStack(Registration.MANA_CRYSTAL.get()))
                         .title(Component.translatable("creativemodetab.wuxia_tab")));
     }
 }

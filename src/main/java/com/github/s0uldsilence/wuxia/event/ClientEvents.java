@@ -2,8 +2,9 @@ package com.github.s0uldsilence.wuxia.event;
 
 import com.github.s0uldsilence.wuxia.Wuxia;
 import com.github.s0uldsilence.wuxia.client.CultivationHudOverlay;
-import com.github.s0uldsilence.wuxia.networking.ModMessages;
+import com.github.s0uldsilence.wuxia.setup.ModMessages;
 import com.github.s0uldsilence.wuxia.networking.packet.CCultivateC2SPacket;
+import com.github.s0uldsilence.wuxia.networking.packet.ScanOresC2SPacket;
 import com.github.s0uldsilence.wuxia.networking.packet.SetCultivationMethodC2SPacket;
 import com.github.s0uldsilence.wuxia.util.KeyBinding;
 import net.minecraftforge.api.distmarker.Dist;
@@ -26,6 +27,8 @@ public class ClientEvents {
                 //Minecraft.getInstance().player.sendSystemMessage(Component.literal("Pressed a Key!"));
                 //ModMessages.sendToServer(new CultivateC2SPacket());
                 ModMessages.sendToServer(new SetCultivationMethodC2SPacket("Advanced Method"));
+            } else if (KeyBinding.SCAN_ORES_KEY.consumeClick()){
+                ModMessages.sendToServer(new ScanOresC2SPacket());
             }
         }
     }
@@ -36,10 +39,12 @@ public class ClientEvents {
         public static void onKeyRegister(RegisterKeyMappingsEvent event) {
             event.register(KeyBinding.CULTIVATING_KEY);
             event.register((KeyBinding.SET_METHOD_KEY));
+            event.register(KeyBinding.SCAN_ORES_KEY);
         }
         @SubscribeEvent
         public static void registerGuiOverlay(RegisterGuiOverlaysEvent event) {
             event.registerAboveAll("cultivation", CultivationHudOverlay.HUD_CULTIVATION);
         }
     }
+
 }

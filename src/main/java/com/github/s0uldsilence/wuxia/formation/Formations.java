@@ -1,15 +1,11 @@
 package com.github.s0uldsilence.wuxia.formation;
 
 import com.github.s0uldsilence.wuxia.Wuxia;
-import com.github.s0uldsilence.wuxia.block.ModBlocks;
 import com.klikli_dev.modonomicon.api.ModonomiconAPI;
 import com.klikli_dev.modonomicon.api.multiblock.Multiblock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BonemealableBlock;
-import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,8 +38,8 @@ public class Formations {
         Formation waterFormation = new Formation("Water Formation", "placement/water_formation");
         Formations.registerFormation(waterFormation);
 
-        Formation iceFormation = new Formation("My Formation", "placement/ice_formation");
-        Formations.registerFormation(iceFormation);
+        Formation growFormation = new Formation("Grow Formation", "placement/grow_formation");
+        Formations.registerFormation(growFormation);
     }
 
     public static String getValidFormationPath(Level level, BlockPos pos){

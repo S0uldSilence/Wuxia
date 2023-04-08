@@ -1,17 +1,10 @@
 package com.github.s0uldsilence.wuxia.block.custom;
 
-import com.github.s0uldsilence.wuxia.Wuxia;
-import com.github.s0uldsilence.wuxia.block.entity.BasicPillFurnaceBlockEntity;
-import com.github.s0uldsilence.wuxia.block.entity.FormationCoreBlockEntity;
-import com.github.s0uldsilence.wuxia.block.entity.ModBlockEntities;
-import com.github.s0uldsilence.wuxia.formation.Formation;
-import com.github.s0uldsilence.wuxia.screen.TileEntities.FormationCoreMenu;
-import com.klikli_dev.modonomicon.api.ModonomiconAPI;
-import com.klikli_dev.modonomicon.api.multiblock.Multiblock;
-import net.minecraft.client.Minecraft;
+import com.github.s0uldsilence.wuxia.block.entity.FormationCoreBE;
+import com.github.s0uldsilence.wuxia.formation.Formations;
+import com.github.s0uldsilence.wuxia.setup.Registration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -22,7 +15,6 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.FurnaceBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -65,16 +57,10 @@ public class FormationCoreBlock extends BaseEntityBlock {
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         if (!pLevel.isClientSide()) {
             BlockEntity entity = pLevel.getBlockEntity(pPos);
-            Multiblock formation = ModonomiconAPI.get().getMultiblock(new ResourceLocation(Wuxia.MODID, "placement/formation"));
-            Multiblock formations = ModonomiconAPI.get().getMultiblock(new ResourceLocation(Wuxia.MODID, "placement/formation"));
-            if (formation.validate(pLevel, pPos) != null) {
-                if(entity instanceof FormationCoreBlockEntity) {
-                    NetworkHooks.openScreen(((ServerPlayer)pPlayer), (FormationCoreBlockEntity)entity, pPos);
-                } else {
-                    throw new IllegalStateException("Our Container provider is missing!");
-                }
-                pPlayer.sendSystemMessage(Component.literal("Valid Multiblock"));
-                //NetworkHooks.openScreen(((ServerPlayer) pPlayer), (FormationCoreBlockEntity) entity, pPos);
+            String name = Formations.getValidFormationName(pLevel, pPos);
+            if (name != null) {
+                pPlayer.sendSystemMessage(Component.literal("Valid Multiblock: " + name));
+                NetworkHooks.openScreen(((ServerPlayer)pPlayer), (FormationCoreBE)entity, pPos);
             } else {
                 pPlayer.sendSystemMessage(Component.literal("Invalid Multiblock"));
             }
@@ -90,14 +76,14 @@ public class FormationCoreBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new FormationCoreBlockEntity(pos, state);
+        return new FormationCoreBE(pos, state);
     }
 
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state,
                                                                   BlockEntityType<T> type) {
-        return createTickerHelper(type, ModBlockEntities.FORMATION_CORE.get(),
-                FormationCoreBlockEntity::tick);
+        return createTickerHelper(type, Registration.FORMATION_CORE_BE.get(),
+                FormationCoreBE::tick);
     }
 }

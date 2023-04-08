@@ -3,17 +3,50 @@
   "pools": [
     {
       "bonus_rolls": 0.0,
-      "conditions": [
-        {
-          "condition": "minecraft:survives_explosion"
-        }
-      ],
       "entries": [
         {
           "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:copy_name",
+              "source": "block_entity"
+            },
+            {
+              "function": "minecraft:copy_nbt",
+              "ops": [
+                {
+                  "op": "replace",
+                  "source": "inventory",
+                  "target": "BlockEntityTag.inventory"
+                },
+                {
+                  "op": "replace",
+                  "source": "essence",
+                  "target": "BlockEntityTag.essence"
+                },
+                {
+                  "op": "replace",
+                  "source": "max_essence",
+                  "target": "BlockEntityTag.max_essence"
+                }
+              ],
+              "source": "block_entity"
+            },
+            {
+              "type": "wuxia:formation_core",
+              "entries": [
+                {
+                  "type": "minecraft:dynamic",
+                  "name": "minecraft:contents"
+                }
+              ],
+              "function": "minecraft:set_contents"
+            }
+          ],
           "name": "wuxia:formation_core"
         }
       ],
+      "name": "formation_core",
       "rolls": 1.0
     }
   ]

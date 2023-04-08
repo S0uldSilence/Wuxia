@@ -1,7 +1,7 @@
 package com.github.s0uldsilence.wuxia.block.custom;
 
-import com.github.s0uldsilence.wuxia.block.entity.BasicPillFurnaceBlockEntity;
-import com.github.s0uldsilence.wuxia.block.entity.ModBlockEntities;
+import com.github.s0uldsilence.wuxia.block.entity.BasicPillFurnaceBE;
+import com.github.s0uldsilence.wuxia.setup.Registration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -56,8 +56,8 @@ public class BasicPillFurnaceBlock extends BaseEntityBlock {
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
         if (pState.getBlock() != pNewState.getBlock()) {
             BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
-            if (blockEntity instanceof BasicPillFurnaceBlockEntity) {
-                ((BasicPillFurnaceBlockEntity) blockEntity).drops();
+            if (blockEntity instanceof BasicPillFurnaceBE) {
+                ((BasicPillFurnaceBE) blockEntity).drops();
             }
         }
         super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
@@ -68,8 +68,8 @@ public class BasicPillFurnaceBlock extends BaseEntityBlock {
                                  Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         if (!pLevel.isClientSide()) {
             BlockEntity entity = pLevel.getBlockEntity(pPos);
-            if(entity instanceof BasicPillFurnaceBlockEntity) {
-                NetworkHooks.openScreen(((ServerPlayer)pPlayer), (BasicPillFurnaceBlockEntity)entity, pPos);
+            if(entity instanceof BasicPillFurnaceBE) {
+                NetworkHooks.openScreen(((ServerPlayer)pPlayer), (BasicPillFurnaceBE)entity, pPos);
             } else {
                 throw new IllegalStateException("Our Container provider is missing!");
             }
@@ -80,14 +80,14 @@ public class BasicPillFurnaceBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new BasicPillFurnaceBlockEntity(pos, state);
+        return new BasicPillFurnaceBE(pos, state);
     }
 
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state,
                                                                   BlockEntityType<T> type) {
-        return createTickerHelper(type, ModBlockEntities.BASIC_PILL_FURNACE.get(),
-                BasicPillFurnaceBlockEntity::tick);
+        return createTickerHelper(type, Registration.BASIC_PILL_FURNACE_BE.get(),
+                BasicPillFurnaceBE::tick);
     }
 }

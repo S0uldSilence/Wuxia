@@ -80,5 +80,6 @@ public class EnUsProvider extends LanguageProvider {
         add("gui.wuxia.filter.legendary", "Legendary");
 
         add("book.wuxia.wuxia_tome.name", "Wuxia Tome");
+        add("block.wuxia.essence_storage", "Essence Storage");
     }
 }

@@ -1,8 +1,8 @@
 package com.github.s0uldsilence.wuxia.integration;
 
 import com.github.s0uldsilence.wuxia.Wuxia;
-import com.github.s0uldsilence.wuxia.block.ModBlocks;
 import com.github.s0uldsilence.wuxia.recipe.BasicPillFurnaceRecipe;
+import com.github.s0uldsilence.wuxia.setup.Registration;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -25,7 +25,7 @@ public class BasicPillFurnaceRecipeCategory implements IRecipeCategory<BasicPill
 
     public BasicPillFurnaceRecipeCategory(IGuiHelper helper) {
         this.background = helper.createDrawable(TEXTURE, 0, 0, 176, 85);
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.BASIC_PILL_FURNACE.get()));
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(Registration.BASIC_PILL_FURNACE.get()));
     }
 
     @Override

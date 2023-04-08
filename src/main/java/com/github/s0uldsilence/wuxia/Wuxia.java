@@ -1,16 +1,14 @@
 package com.github.s0uldsilence.wuxia;
 
-import com.github.s0uldsilence.wuxia.block.ModBlocks;
-import com.github.s0uldsilence.wuxia.block.entity.ModBlockEntities;
 import com.github.s0uldsilence.wuxia.capability.CultivationMethods;
 import com.github.s0uldsilence.wuxia.formation.Formations;
 import com.github.s0uldsilence.wuxia.item.ModCreativeModeTabs;
-import com.github.s0uldsilence.wuxia.item.ModItems;
-import com.github.s0uldsilence.wuxia.networking.ModMessages;
-import com.github.s0uldsilence.wuxia.recipe.ModRecipes;
+import com.github.s0uldsilence.wuxia.setup.ModMessages;
+import com.github.s0uldsilence.wuxia.setup.ModRecipes;
 import com.github.s0uldsilence.wuxia.screen.TileEntities.BasicPillFurnaceScreen;
-import com.github.s0uldsilence.wuxia.screen.ModMenuTypes;
+import com.github.s0uldsilence.wuxia.setup.ModMenuTypes;
 import com.github.s0uldsilence.wuxia.screen.TileEntities.FormationCoreScreen;
+import com.github.s0uldsilence.wuxia.setup.Registration;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.world.item.*;
 import net.minecraftforge.api.distmarker.Dist;
@@ -42,22 +40,14 @@ public class Wuxia {
     public Wuxia() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
-        // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
-        ModItems.register(modEventBus);
-        ModBlocks.register(modEventBus);
-
-
-        ModBlockEntities.register(modEventBus);
-        ModMenuTypes.register(modEventBus);
-
+        Registration.init();
         ModRecipes.register(modEventBus);
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
-
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -68,20 +58,25 @@ public class Wuxia {
 
     private void addCreative(CreativeModeTabEvent.BuildContents event) {
         if(event.getTab() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(ModItems.GREEN_JADE);
         }
 
         if(event.getTab() == ModCreativeModeTabs.WUXIA_TAB) {
-            event.accept(ModItems.GREEN_JADE);
-            event.accept(ModBlocks.GREEN_JADE_BLOCK);
-            event.accept(ModBlocks.GREEN_JADE_ORE);
-            event.accept(ModBlocks.DEEPSLATE_GREEN_JADE_ORE);
-            event.accept(ModBlocks.BASIC_PILL_FURNACE);
-
-            event.accept(ModBlocks.MANA_CRYSTAL_ORE);
-            event.accept(ModBlocks.FORMATION_CORE);
-            event.accept(ModItems.MANA_CRYSTAL);
-            event.accept(ModItems.CULTIVATION_CHECKER);
+            event.accept(Registration.FORMATION_CORE);
+            event.accept(Registration.MANA_CRYSTAL);
+            event.accept(Registration.MANA_CRYSTAL_ORE);
+            event.accept(Registration.DEEPSLATE_GREEN_JADE_ORE);
+            event.accept(Registration.CULTIVATION_CHECKER);
+            event.accept(Registration.GREEN_JADE);
+            event.accept(Registration.GREEN_JADE_BLOCK);
+            event.accept(Registration.GREEN_JADE_ORE);
+            event.accept(Registration.AIR_ELEMENT_RUNE);
+            event.accept(Registration.EARTH_ELEMENT_RUNE);
+            event.accept(Registration.FIRE_ELEMENT_RUNE);
+            event.accept(Registration.WATER_ELEMENT_RUNE);
+            event.accept(Registration.DEATH_ELEMENT_RUNE);
+            event.accept(Registration.LIFE_ELEMENT_RUNE);
+            event.accept(Registration.SPACE_ELEMENT_RUNE);
+            event.accept(Registration.TIME_ELEMENT_RUNE);
         }
     }
     private void enqueueIMC(final InterModEnqueueEvent event)
@@ -114,6 +109,5 @@ public class Wuxia {
             MenuScreens.register(ModMenuTypes.FORMATION_CORE_MENU.get(), FormationCoreScreen::new);
         }
     }
-
 
 }

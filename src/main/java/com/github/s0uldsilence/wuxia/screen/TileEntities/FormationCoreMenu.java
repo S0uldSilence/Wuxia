@@ -1,9 +1,8 @@
 package com.github.s0uldsilence.wuxia.screen.TileEntities;
 
-import com.github.s0uldsilence.wuxia.block.ModBlocks;
-import com.github.s0uldsilence.wuxia.block.entity.BasicPillFurnaceBlockEntity;
-import com.github.s0uldsilence.wuxia.block.entity.FormationCoreBlockEntity;
-import com.github.s0uldsilence.wuxia.screen.ModMenuTypes;
+import com.github.s0uldsilence.wuxia.block.entity.FormationCoreBE;
+import com.github.s0uldsilence.wuxia.setup.ModMenuTypes;
+import com.github.s0uldsilence.wuxia.setup.Registration;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -15,7 +14,7 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
 
 public class FormationCoreMenu extends AbstractContainerMenu {
-    public final FormationCoreBlockEntity blockEntity;
+    public final FormationCoreBE blockEntity;
     private final Level level;
     private final ContainerData data;
 
@@ -25,7 +24,7 @@ public class FormationCoreMenu extends AbstractContainerMenu {
     public FormationCoreMenu(int id, Inventory inv, BlockEntity entity, ContainerData data) {
         super(ModMenuTypes.FORMATION_CORE_MENU.get(), id);
         checkContainerSize(inv, 1);
-        blockEntity = (FormationCoreBlockEntity) entity;
+        blockEntity = (FormationCoreBE) entity;
         this.level = inv.player.level;
         this.data = data;
 
@@ -89,7 +88,7 @@ public class FormationCoreMenu extends AbstractContainerMenu {
     @Override
     public boolean stillValid(Player player) {
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
-                player, ModBlocks.FORMATION_CORE.get());
+                player, Registration.FORMATION_CORE.get());
     }
 
     private void addPlayerInventory(Inventory playerInventory) {

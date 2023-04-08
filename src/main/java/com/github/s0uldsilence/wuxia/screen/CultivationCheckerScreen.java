@@ -2,11 +2,10 @@ package com.github.s0uldsilence.wuxia.screen;
 
 import com.github.s0uldsilence.wuxia.capability.*;
 import com.github.s0uldsilence.wuxia.client.ClientCultivationData;
-import com.github.s0uldsilence.wuxia.networking.*;
 import com.github.s0uldsilence.wuxia.networking.packet.*;
+import com.github.s0uldsilence.wuxia.setup.ModMessages;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;

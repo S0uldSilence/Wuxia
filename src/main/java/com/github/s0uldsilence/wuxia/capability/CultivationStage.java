@@ -1,11 +1,5 @@
 package com.github.s0uldsilence.wuxia.capability;
 
-import com.github.s0uldsilence.wuxia.item.ModItems;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-
-import java.util.Collections;
 import java.util.List;
 
 public class CultivationStage {

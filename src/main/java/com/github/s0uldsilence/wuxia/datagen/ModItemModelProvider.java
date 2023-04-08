@@ -1,8 +1,7 @@
 package com.github.s0uldsilence.wuxia.datagen;
 
 import com.github.s0uldsilence.wuxia.Wuxia;
-import com.github.s0uldsilence.wuxia.block.ModBlocks;
-import com.github.s0uldsilence.wuxia.item.ModItems;
+import com.github.s0uldsilence.wuxia.setup.Registration;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -18,9 +17,9 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        simpleItem(ModItems.MANA_CRYSTAL);
-        simpleItem(ModItems.GREEN_JADE);
-        simpleItem(ModItems.CULTIVATION_METHOD);
+        simpleItem(Registration.MANA_CRYSTAL);
+        simpleItem(Registration.GREEN_JADE);
+        simpleItem(Registration.CULTIVATION_METHOD);
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {

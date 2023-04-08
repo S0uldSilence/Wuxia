@@ -1,0 +1,43 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:copy_name",
+              "source": "block_entity"
+            },
+            {
+              "function": "minecraft:copy_nbt",
+              "ops": [
+                {
+                  "op": "replace",
+                  "source": "essenceStorage",
+                  "target": "BlockEntityTag.essenceStorage"
+                }
+              ],
+              "source": "block_entity"
+            },
+            {
+              "type": "wuxia:essence_jar",
+              "entries": [
+                {
+                  "type": "minecraft:dynamic",
+                  "name": "minecraft:contents"
+                }
+              ],
+              "function": "minecraft:set_contents"
+            }
+          ],
+          "name": "wuxia:essence_jar"
+        }
+      ],
+      "name": "essence_jar",
+      "rolls": 1.0
+    }
+  ]
+}

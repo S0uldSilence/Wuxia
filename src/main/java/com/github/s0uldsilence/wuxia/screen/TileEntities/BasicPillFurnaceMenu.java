@@ -1,9 +1,8 @@
 package com.github.s0uldsilence.wuxia.screen.TileEntities;
 
-import com.github.s0uldsilence.wuxia.block.ModBlocks;
-import com.github.s0uldsilence.wuxia.block.entity.BasicPillFurnaceBlockEntity;
-import com.github.s0uldsilence.wuxia.screen.ModMenuTypes;
-import net.minecraft.network.Connection;
+import com.github.s0uldsilence.wuxia.block.entity.BasicPillFurnaceBE;
+import com.github.s0uldsilence.wuxia.setup.ModMenuTypes;
+import com.github.s0uldsilence.wuxia.setup.Registration;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -13,10 +12,9 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
-import org.jetbrains.annotations.Nullable;
 
 public class BasicPillFurnaceMenu extends AbstractContainerMenu {
-    public final BasicPillFurnaceBlockEntity blockEntity;
+    public final BasicPillFurnaceBE blockEntity;
     private final Level level;
     private final ContainerData data;
 
@@ -26,7 +24,7 @@ public class BasicPillFurnaceMenu extends AbstractContainerMenu {
     public BasicPillFurnaceMenu(int id, Inventory inv, BlockEntity entity, ContainerData data) {
         super(ModMenuTypes.BASIC_PILL_FURNACE_MENU.get(), id);
         checkContainerSize(inv, 3);
-        blockEntity = (BasicPillFurnaceBlockEntity) entity;
+        blockEntity = (BasicPillFurnaceBE) entity;
         this.level = inv.player.level;
         this.data = data;
 
@@ -101,7 +99,7 @@ public class BasicPillFurnaceMenu extends AbstractContainerMenu {
     @Override
     public boolean stillValid(Player player) {
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
-                player, ModBlocks.BASIC_PILL_FURNACE.get());
+                player, Registration.BASIC_PILL_FURNACE.get());
     }
 
     private void addPlayerInventory(Inventory playerInventory) {

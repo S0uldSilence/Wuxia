@@ -3,12 +3,13 @@ package com.github.s0uldsilence.wuxia.event;
 import com.github.s0uldsilence.wuxia.Wuxia;
 import com.github.s0uldsilence.wuxia.capability.PlayerCultivation;
 import com.github.s0uldsilence.wuxia.capability.PlayerCultivationProvider;
-import com.github.s0uldsilence.wuxia.networking.ModMessages;
+import com.github.s0uldsilence.wuxia.setup.ModMessages;
 import com.github.s0uldsilence.wuxia.networking.packet.CultivationDataSyncS2CPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
@@ -17,6 +18,7 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
 @Mod.EventBusSubscriber(modid = Wuxia.MODID)
 public class ModEvents {
@@ -69,4 +71,6 @@ public class ModEvents {
             }
         }
     }
+
+
 }

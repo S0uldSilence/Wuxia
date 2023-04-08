@@ -1,7 +1,6 @@
 package com.github.s0uldsilence.wuxia.datagen;
 
 import com.github.s0uldsilence.wuxia.Wuxia;
-import com.github.s0uldsilence.wuxia.item.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;

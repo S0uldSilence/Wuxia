@@ -1,14 +1,8 @@
 package com.github.s0uldsilence.wuxia.item.custom;
 
-import com.github.s0uldsilence.wuxia.capability.CultivationMethod;
 import com.github.s0uldsilence.wuxia.capability.CultivationMethods;
-import com.github.s0uldsilence.wuxia.capability.PlayerCultivationProvider;
-import com.github.s0uldsilence.wuxia.item.ModItems;
-import com.github.s0uldsilence.wuxia.networking.ModMessages;
+import com.github.s0uldsilence.wuxia.setup.ModMessages;
 import com.github.s0uldsilence.wuxia.networking.packet.SetCultivationMethodByIdC2SPacket;
-import com.github.s0uldsilence.wuxia.networking.packet.SetCultivationMethodC2SPacket;
-import com.github.s0uldsilence.wuxia.util.InventoryUtil;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -17,9 +11,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 

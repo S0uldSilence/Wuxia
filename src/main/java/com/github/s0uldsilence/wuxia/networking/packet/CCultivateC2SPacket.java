@@ -2,7 +2,7 @@ package com.github.s0uldsilence.wuxia.networking.packet;
 
 
 import com.github.s0uldsilence.wuxia.capability.PlayerCultivationProvider;
-import com.github.s0uldsilence.wuxia.networking.ModMessages;
+import com.github.s0uldsilence.wuxia.setup.ModMessages;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;

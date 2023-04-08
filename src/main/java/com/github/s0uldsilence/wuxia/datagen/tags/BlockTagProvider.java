@@ -1,14 +1,10 @@
 package com.github.s0uldsilence.wuxia.datagen.tags;
 
 import com.github.s0uldsilence.wuxia.Wuxia;
-import com.github.s0uldsilence.wuxia.block.ModBlocks;
-import com.github.s0uldsilence.wuxia.util.ModTags;
+import com.github.s0uldsilence.wuxia.setup.Registration;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.IntrinsicHolderTagsProvider;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.tags.BlockTags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -24,10 +20,19 @@ public class BlockTagProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
-    this.tag(ModTags.Blocks.DOWSING_ROD_VALUABLES)
-            .add(ModBlocks.MANA_CRYSTAL_ORE.get());
-
-    this.tag(ModTags.Blocks.FORMATION_UPGRADE_RUNE);
+        tag(Registration.DOWSING_ROD_VALUABLES)
+                .add(Registration.MANA_CRYSTAL_ORE.get()
+                );
+        tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(Registration.MANA_CRYSTAL_ORE.get())
+                .add(Registration.FORMATION_CORE.get())
+                .add(Registration.FORMATION_CORE.get())
+                .add(Registration.ESSENCE_JAR.get());
+        tag(BlockTags.NEEDS_IRON_TOOL)
+                .add(Registration.MANA_CRYSTAL_ORE.get())
+                .add(Registration.FORMATION_CORE.get())
+                .add(Registration.FORMATION_CORE.get())
+                .add(Registration.ESSENCE_JAR.get());
 
     }
     @Override

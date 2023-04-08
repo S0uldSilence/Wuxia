@@ -8,12 +8,18 @@ import com.github.s0uldsilence.wuxia.datagen.tags.BlockTagProvider;
 import com.github.s0uldsilence.wuxia.datagen.tags.ItemTagProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.loot.LootTableProvider;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraft.core.HolderLookup.Provider;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 @Mod.EventBusSubscriber(modid = Wuxia.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -28,7 +34,8 @@ public class DataGenerators {
 
 
         generator.addProvider(true, new ModRecipeProvider(packOutput));
-        generator.addProvider(true, ModLootTableProvider.create(packOutput));
+        generator.addProvider(true, new LootTableProvider(packOutput, Collections.emptySet(),
+                List.of(new LootTableProvider.SubProviderEntry(WuxiaLootTables::new, LootContextParamSets.BLOCK))));
         generator.addProvider(true, new ModBlockStateProvider(packOutput, existingFileHelper));
         generator.addProvider(true, new ModItemModelProvider(packOutput, existingFileHelper));
 
@@ -41,8 +48,6 @@ public class DataGenerators {
 
         var langProvider = new EnUsProvider(packOutput, Wuxia.MODID);
         generator.addProvider(event.includeServer(), new WuxiaTomeProvider(packOutput, Wuxia.MODID, langProvider));
-        //Important: Lang provider needs to be added after the book provider to process the texts added by the book provider
         generator.addProvider(event.includeClient(), langProvider);
-
     }
 }
