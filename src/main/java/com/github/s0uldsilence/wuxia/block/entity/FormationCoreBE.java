@@ -1,5 +1,6 @@
 package com.github.s0uldsilence.wuxia.block.entity;
 
+import com.github.s0uldsilence.wuxia.essence.EssenceStorageBE;
 import com.github.s0uldsilence.wuxia.formation.Formations;
 import com.github.s0uldsilence.wuxia.screen.TileEntities.FormationCoreMenu;
 import com.github.s0uldsilence.wuxia.setup.Registration;
@@ -125,26 +126,29 @@ public class FormationCoreBE extends BlockEntity implements MenuProvider {
         BlockPos blockBelowPos = pos.below(3); // get the position of the block 3 blocks below
         BlockState blockAboveState = level.getBlockState(blockAbovePos);
         BlockEntity blockAboveEntity = level.getBlockEntity(blockAbovePos);
+        BlockEntity blockBelowEntity = level.getBlockEntity(blockBelowPos);
         ServerLevel serverLevel = (ServerLevel) level;
 
         //Multiblock formation = ModonomiconAPI.get().getMultiblock(new ResourceLocation(Wuxia.MODID, "placement/fire_formation"));
         String name = Formations.getValidFormationName(level, pos);
         if (name == "Grow Formation") {
-            for (BlockPos checkPos : BlockPos.betweenClosed(blockAbovePos.offset(-2, 0, -2), blockAbovePos.offset(2, 0, 2))) {
-                BlockState checkState = level.getBlockState(checkPos);
-                if (checkState.getBlock() instanceof BonemealableBlock) {
-                    ((BonemealableBlock) checkState.getBlock()).performBonemeal(serverLevel, RandomSource.create(), checkPos, checkState);
-                    BlockPos farmlandPos = checkPos.below();
-                    BlockState farmlandState = level.getBlockState(farmlandPos);
-                    if (farmlandState.getBlock() instanceof net.minecraft.world.level.block.FarmBlock) {
-                        farmlandState = farmlandState.setValue(net.minecraft.world.level.block.FarmBlock.MOISTURE, 7);
-                        level.setBlockAndUpdate(farmlandPos, farmlandState);
+            if (blockBelowEntity instanceof EssenceStorageBE storage && storage.getEssenceStored() >= 100) {
+                storage.extractEssence(50, false);
+                for (BlockPos checkPos : BlockPos.betweenClosed(blockAbovePos.offset(-2, 0, -2), blockAbovePos.offset(2, 0, 2))) {
+                    BlockState checkState = level.getBlockState(checkPos);
+                    if (checkState.getBlock() instanceof BonemealableBlock) {
+                        ((BonemealableBlock) checkState.getBlock()).performBonemeal(serverLevel, RandomSource.create(), checkPos, checkState);
+                        BlockPos farmlandPos = checkPos.below();
+                        BlockState farmlandState = level.getBlockState(farmlandPos);
+                        if (farmlandState.getBlock() instanceof net.minecraft.world.level.block.FarmBlock) {
+                            farmlandState = farmlandState.setValue(net.minecraft.world.level.block.FarmBlock.MOISTURE, 7);
+                            level.setBlockAndUpdate(farmlandPos, farmlandState);
+                        }
+                    }
+                    if (checkState.getBlock() instanceof net.minecraft.world.level.block.FarmBlock) {
+
                     }
                 }
-                if (checkState.getBlock() instanceof net.minecraft.world.level.block.FarmBlock) {
-
-                }
-
             }
         } else if (name == "Fire Formation") {
 

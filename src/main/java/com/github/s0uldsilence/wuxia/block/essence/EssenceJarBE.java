@@ -15,6 +15,6 @@ public class EssenceJarBE extends EssenceStorageBE{
         if (level.isClientSide()) {
             return;
         }
-        pEntity.receiveEssence(1,false);
+        //pEntity.receiveEssence(1,false);
     }
 }
