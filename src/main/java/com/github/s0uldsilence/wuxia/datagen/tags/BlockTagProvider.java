@@ -27,12 +27,14 @@ public class BlockTagProvider extends BlockTagsProvider {
                 .add(Registration.MANA_CRYSTAL_ORE.get())
                 .add(Registration.FORMATION_CORE.get())
                 .add(Registration.FORMATION_CORE.get())
-                .add(Registration.ESSENCE_JAR.get());
+                .add(Registration.ESSENCE_JAR.get())
+                .add(Registration.ESSENCE_GENERATOR.get());
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(Registration.MANA_CRYSTAL_ORE.get())
                 .add(Registration.FORMATION_CORE.get())
                 .add(Registration.FORMATION_CORE.get())
-                .add(Registration.ESSENCE_JAR.get());
+                .add(Registration.ESSENCE_JAR.get())
+                .add(Registration.ESSENCE_GENERATOR.get());
 
     }
     @Override

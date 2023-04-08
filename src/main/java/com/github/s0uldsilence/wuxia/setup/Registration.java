@@ -4,6 +4,8 @@ import com.github.s0uldsilence.wuxia.block.custom.BasicPillFurnaceBlock;
 import com.github.s0uldsilence.wuxia.block.custom.FormationCoreBlock;
 import com.github.s0uldsilence.wuxia.block.entity.BasicPillFurnaceBE;
 import com.github.s0uldsilence.wuxia.block.entity.FormationCoreBE;
+import com.github.s0uldsilence.wuxia.block.essence.EssenceGenerator;
+import com.github.s0uldsilence.wuxia.block.essence.EssenceGeneratorBE;
 import com.github.s0uldsilence.wuxia.block.essence.EssenceJar;
 import com.github.s0uldsilence.wuxia.block.essence.EssenceJarBE;
 import com.github.s0uldsilence.wuxia.item.custom.CultivationCheckerItem;
@@ -117,7 +119,9 @@ public class Registration {
     public static final RegistryObject<Item> ESSENCE_JAR_ITEM = fromBlock(ESSENCE_JAR);
     public static final RegistryObject<BlockEntityType<EssenceJarBE>> ESSENCE_JAR_BE = BLOCK_ENTITIES.register("essence_jar", () -> BlockEntityType.Builder.of(EssenceJarBE::new, ESSENCE_JAR.get()).build(null));
 
-
+    public static final RegistryObject<Block> ESSENCE_GENERATOR = BLOCKS.register("essence_generator", () -> new EssenceGenerator(BLOCK_PROPERTIES));
+    public static final RegistryObject<Item> ESSENCE_GENERATOR_ITEM = fromBlock(ESSENCE_GENERATOR);
+    public static final RegistryObject<BlockEntityType<EssenceGeneratorBE>> ESSENCE_GENERATOR_BE = BLOCK_ENTITIES.register("essence_generator", () -> BlockEntityType.Builder.of(EssenceGeneratorBE::new, ESSENCE_GENERATOR.get()).build(null));
 
     //MENUS
     public static final RegistryObject<MenuType<BasicPillFurnaceMenu>> BASIC_PILL_FURNACE_MENU = CONTAINERS.register("basic_pill_furnace_menu", () -> IForgeMenuType.create(BasicPillFurnaceMenu::new));

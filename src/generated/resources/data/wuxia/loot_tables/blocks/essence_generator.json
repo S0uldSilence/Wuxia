@@ -1,0 +1,58 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:copy_name",
+              "source": "block_entity"
+            },
+            {
+              "function": "minecraft:copy_nbt",
+              "ops": [
+                {
+                  "op": "replace",
+                  "source": "essence",
+                  "target": "BlockEntityTag.essence"
+                },
+                {
+                  "op": "replace",
+                  "source": "essenceCapacity",
+                  "target": "BlockEntityTag.essenceCapacity"
+                },
+                {
+                  "op": "replace",
+                  "source": "essenceMaxReceive",
+                  "target": "BlockEntityTag.essenceMaxReceive"
+                },
+                {
+                  "op": "replace",
+                  "source": "essenceMaxExtract",
+                  "target": "BlockEntityTag.essenceMaxExtract"
+                }
+              ],
+              "source": "block_entity"
+            },
+            {
+              "type": "wuxia:essence_generator",
+              "entries": [
+                {
+                  "type": "minecraft:dynamic",
+                  "name": "minecraft:contents"
+                }
+              ],
+              "function": "minecraft:set_contents"
+            }
+          ],
+          "name": "wuxia:essence_generator"
+        }
+      ],
+      "name": "essence_generator",
+      "rolls": 1.0
+    }
+  ]
+}

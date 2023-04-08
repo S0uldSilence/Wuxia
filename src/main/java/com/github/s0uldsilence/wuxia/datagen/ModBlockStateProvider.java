@@ -23,6 +23,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(Registration.BASIC_PILL_FURNACE);
         blockWithItem(Registration.FORMATION_CORE);
         blockWithItem(Registration.ESSENCE_JAR);
+        blockWithItem(Registration.ESSENCE_GENERATOR);
         //blockWithItemEssence(ModBlocks.ESSENCE_STORAGE);
         //horizontalBlock(ModBlocks.BASIC_PILL_FURNACE.get(), new ResourceLocation(Wuxia.MODID, "block/basic_pill_furnace_side"), new ResourceLocation(Wuxia.MODID, "block/basic_pill_furnace_front"), new ResourceLocation(Wuxia.MODID, "block/basic_pill_furnace_top"));
     }

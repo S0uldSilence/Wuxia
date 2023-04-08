@@ -1,6 +1,6 @@
 package com.github.s0uldsilence.wuxia.block.entity;
 
-import com.github.s0uldsilence.wuxia.essence.EssenceStorageBE;
+import com.github.s0uldsilence.wuxia.essence.EssenceBaseStorageBE;
 import com.github.s0uldsilence.wuxia.formation.Formations;
 import com.github.s0uldsilence.wuxia.screen.TileEntities.FormationCoreMenu;
 import com.github.s0uldsilence.wuxia.setup.Registration;
@@ -132,7 +132,7 @@ public class FormationCoreBE extends BlockEntity implements MenuProvider {
         //Multiblock formation = ModonomiconAPI.get().getMultiblock(new ResourceLocation(Wuxia.MODID, "placement/fire_formation"));
         String name = Formations.getValidFormationName(level, pos);
         if (name == "Grow Formation") {
-            if (blockBelowEntity instanceof EssenceStorageBE storage && storage.getEssenceStored() >= 100) {
+            if (blockBelowEntity instanceof EssenceBaseStorageBE storage && storage.getEssenceStored() >= 100) {
                 storage.extractEssence(50, false);
                 for (BlockPos checkPos : BlockPos.betweenClosed(blockAbovePos.offset(-2, 0, -2), blockAbovePos.offset(2, 0, 2))) {
                     BlockState checkState = level.getBlockState(checkPos);

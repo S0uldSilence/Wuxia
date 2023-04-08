@@ -7,20 +7,19 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class EssenceStorageBE extends BlockEntity implements IEssenceStorage {
+public abstract class EssenceBaseBE extends BlockEntity implements IEssenceStorage {
     private int essence;
     private int capacity;
     private int maxReceive;
     private int maxExtract;
 
-    public EssenceStorageBE(BlockEntityType<?> pType, BlockPos pPos, BlockState pBlockState, int capacity, int maxReceive, int maxExtract, int essence) {
+    public EssenceBaseBE(BlockEntityType<?> pType, BlockPos pPos, BlockState pBlockState, int capacity, int maxReceive, int maxExtract, int essence) {
         super(pType, pPos, pBlockState);
         this.capacity = capacity;
         this.maxReceive = maxReceive;
         this.maxExtract = maxExtract;
-        this.essence = Math.max(0 , Math.min(capacity, essence));
+        this.essence = Math.max(0, Math.min(capacity, essence));
     }
-
     @Override
     protected void saveAdditional(CompoundTag nbt) {
         nbt.putInt("essence", this.essence);

@@ -4,7 +4,7 @@ import net.minecraft.nbt.IntTag;
 import net.minecraft.nbt.Tag;
 import net.minecraftforge.common.util.INBTSerializable;
 
-public class EssenceStorage implements IEssenceStorage, INBTSerializable<Tag>
+public class EssenceStorage implements IEssenceStorage/*, INBTSerializable<Tag>*/
 {
     protected int essence;
     protected int capacity;
@@ -80,20 +80,6 @@ public class EssenceStorage implements IEssenceStorage, INBTSerializable<Tag>
     public boolean canReceive()
     {
         return this.maxReceive > 0;
-    }
-
-    @Override
-    public Tag serializeNBT()
-    {
-        return IntTag.valueOf(this.getEssenceStored());
-    }
-
-    @Override
-    public void deserializeNBT(Tag nbt)
-    {
-        if (!(nbt instanceof IntTag intNbt))
-            throw new IllegalArgumentException("Can not deserialize to an instance that isn't the default implementation");
-        this.essence = intNbt.getAsInt();
     }
     protected void onEssenceChanged() {
     }

@@ -1,4 +1,5 @@
-// 1.19.3	2023-04-08T22:18:29.0328951	Loot Tables
+// 1.19.3	2023-04-08T23:18:44.1154185	Loot Tables
+b0d8eadc688a243d3d7746b4221a21da8260a8ca data/wuxia/loot_tables/blocks/essence_generator.json
 74e682357c5756d368a8623eedc9c82b9f74eb7b data/wuxia/loot_tables/blocks/essence_jar.json
 3ea57e2f251ceca08362f543337dc8a9124090ec data/wuxia/loot_tables/blocks/formation_core.json
 10bf1f3fee2ac2b0505dba830e35c50476ba4cf7 data/wuxia/loot_tables/blocks/mana_crystal_ore.json

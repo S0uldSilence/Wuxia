@@ -77,6 +77,8 @@ public class Wuxia {
             event.accept(Registration.LIFE_ELEMENT_RUNE);
             event.accept(Registration.SPACE_ELEMENT_RUNE);
             event.accept(Registration.TIME_ELEMENT_RUNE);
+            event.accept(Registration.ESSENCE_JAR);
+            event.accept(Registration.ESSENCE_GENERATOR);
         }
     }
     private void enqueueIMC(final InterModEnqueueEvent event)
