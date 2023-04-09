@@ -52,6 +52,8 @@ public abstract class LootTableTools {
                                 .copy("essenceCapacity", "BlockEntityTag.essenceCapacity", CopyNbtFunction.MergeStrategy.REPLACE)
                                 .copy("essenceMaxReceive", "BlockEntityTag.essenceMaxReceive", CopyNbtFunction.MergeStrategy.REPLACE)
                                 .copy("essenceMaxExtract", "BlockEntityTag.essenceMaxExtract", CopyNbtFunction.MergeStrategy.REPLACE)
+                                .copy("positions", "BlockEntityTag.positions", CopyNbtFunction.MergeStrategy.REPLACE)
+                                .copy("positionsCount", "BlockEntityTag.positionsCount", CopyNbtFunction.MergeStrategy.REPLACE)
                         )
                         .apply(SetContainerContents.setContents(type)
                                 .withEntry(DynamicLoot.dynamicEntry(new ResourceLocation("minecraft", "contents"))))

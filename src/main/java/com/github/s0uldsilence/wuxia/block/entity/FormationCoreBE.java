@@ -124,12 +124,8 @@ public class FormationCoreBE extends BlockEntity implements MenuProvider {
 
         BlockPos blockAbovePos = pos.above(3); // get the position of the block 3 blocks above
         BlockPos blockBelowPos = pos.below(3); // get the position of the block 3 blocks below
-        BlockState blockAboveState = level.getBlockState(blockAbovePos);
-        BlockEntity blockAboveEntity = level.getBlockEntity(blockAbovePos);
         BlockEntity blockBelowEntity = level.getBlockEntity(blockBelowPos);
         ServerLevel serverLevel = (ServerLevel) level;
-
-        //Multiblock formation = ModonomiconAPI.get().getMultiblock(new ResourceLocation(Wuxia.MODID, "placement/fire_formation"));
         String name = Formations.getValidFormationName(level, pos);
         if (name == "Grow Formation") {
             if (blockBelowEntity instanceof EssenceBaseStorageBE storage && storage.getEssenceStored() >= 100) {
@@ -170,5 +166,4 @@ public class FormationCoreBE extends BlockEntity implements MenuProvider {
     public AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
         return new FormationCoreMenu(pContainerId, pPlayerInventory, this, this.data);
     }
-
 }

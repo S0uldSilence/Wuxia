@@ -33,6 +33,16 @@
                   "op": "replace",
                   "source": "essenceMaxExtract",
                   "target": "BlockEntityTag.essenceMaxExtract"
+                },
+                {
+                  "op": "replace",
+                  "source": "positions",
+                  "target": "BlockEntityTag.positions"
+                },
+                {
+                  "op": "replace",
+                  "source": "positionsCount",
+                  "target": "BlockEntityTag.positionsCount"
                 }
               ],
               "source": "block_entity"

@@ -20,6 +20,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(Registration.MANA_CRYSTAL);
         simpleItem(Registration.GREEN_JADE);
         simpleItem(Registration.CULTIVATION_METHOD);
+        simpleItem(Registration.LINKING_TOOL);
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {

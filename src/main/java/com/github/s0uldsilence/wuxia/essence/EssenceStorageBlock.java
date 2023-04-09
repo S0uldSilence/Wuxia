@@ -2,6 +2,7 @@ package com.github.s0uldsilence.wuxia.essence;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -61,7 +62,7 @@ public abstract class EssenceStorageBlock extends BaseEntityBlock {
 
 
 
-            if (entity instanceof EssenceStorageBE tile) {
+            if (entity instanceof EssenceBaseBE tile) {
 
 
                 ItemStack stack = pPlayer.getItemInHand(pHand);
@@ -93,6 +94,18 @@ public abstract class EssenceStorageBlock extends BaseEntityBlock {
             pTooltip.add(Component.literal("Essence: " + essence + "/" + maxEssence));
             pTooltip.add(Component.literal("Max Receive: " + maxReceive));
             pTooltip.add(Component.literal("Max Extract: " + maxExtract));
+
+            ListTag listTag = tag.getList("positions", 10);
+            int positionsCount = tag.getInt("positionsCount");
+            //BlockPos[] positions = new BlockPos[positionsCount];
+            for (int i = 0; i < listTag.size(); i++) {
+                CompoundTag posTag = listTag.getCompound(i);
+                int x = posTag.getInt("x");
+                int y = posTag.getInt("y");
+                int z = posTag.getInt("z");
+                //positions[i] = new BlockPos(x, y, z);
+                pTooltip.add(Component.literal("Linked Block at Position " + i + ": " + x + ", " + y + ", " + z));
+            }
         }
     }
 }

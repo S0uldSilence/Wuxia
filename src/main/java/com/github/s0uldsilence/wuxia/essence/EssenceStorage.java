@@ -81,6 +81,4 @@ public class EssenceStorage implements IEssenceStorage/*, INBTSerializable<Tag>*
     {
         return this.maxReceive > 0;
     }
-    protected void onEssenceChanged() {
-    }
 }

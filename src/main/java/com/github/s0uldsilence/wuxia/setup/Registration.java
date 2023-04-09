@@ -10,6 +10,7 @@ import com.github.s0uldsilence.wuxia.block.essence.EssenceJar;
 import com.github.s0uldsilence.wuxia.block.essence.EssenceJarBE;
 import com.github.s0uldsilence.wuxia.item.custom.CultivationCheckerItem;
 import com.github.s0uldsilence.wuxia.item.custom.CultivationMethodItem;
+import com.github.s0uldsilence.wuxia.item.custom.LinkingToolItem;
 import com.github.s0uldsilence.wuxia.item.custom.ManaCrystalItem;
 import com.github.s0uldsilence.wuxia.screen.TileEntities.BasicPillFurnaceMenu;
 import com.github.s0uldsilence.wuxia.screen.TileEntities.FormationCoreMenu;
@@ -104,6 +105,8 @@ public class Registration {
     public static final RegistryObject<Item> TIME_ELEMENT_RUNE_ITEM = fromBlock(TIME_ELEMENT_RUNE);
 
 
+    //TOOLS
+    public static final RegistryObject<Item> LINKING_TOOL =  ITEMS.register("linking_tool", () -> new LinkingToolItem(ITEM_PROPERTIES));
     //BLOCK ENTITIES
     public static final RegistryObject<Block> BASIC_PILL_FURNACE = BLOCKS.register("basic_pill_furnace", () -> new BasicPillFurnaceBlock(BLOCK_PROPERTIES));
     public static final RegistryObject<Item> BASIC_PILL_FURNACE_ITEM = fromBlock(BASIC_PILL_FURNACE);

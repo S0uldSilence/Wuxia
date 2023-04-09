@@ -31,5 +31,4 @@ public class EssenceJar extends EssenceStorageBlock {
         return createTickerHelper(type, Registration.ESSENCE_JAR_BE.get(),
                 EssenceJarBE::tick);
     }
-
 }

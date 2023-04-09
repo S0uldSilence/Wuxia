@@ -21,5 +21,4 @@ public class WuxiaLootTables implements LootTableSubProvider  {
         builder.accept(new ResourceLocation(Wuxia.MODID, "blocks/formation_core"), LootTableTools.createStandardTable("formation_core", Registration.FORMATION_CORE.get(), Registration.FORMATION_CORE_BE.get()));
         builder.accept(new ResourceLocation(Wuxia.MODID, "blocks/mana_crystal_ore"), LootTableTools.createSilkTouchTable("mana_crystal_ore", Registration.MANA_CRYSTAL_ORE.get(), Registration.MANA_CRYSTAL.get(), 1, 3));
     }
-
 }
